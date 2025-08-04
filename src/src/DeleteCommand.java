@@ -1,27 +1,30 @@
 public class DeleteCommand implements Command {
     Receiver receiver;
+    String params;
     int index;
 
-    public DeleteCommand(Receiver receiver, int index) {
+    public DeleteCommand(Receiver receiver, String params) {
         this.receiver = receiver;
         //index to delete
-        this.index = index;
+        this.params = params;
+        this.index = Integer.parseInt(params);
 
         //! check index is indeed numerical input: try catch
-        execute();
-        printAction();
+
 
     }
-    //!call delete method in Receiver class
+
     @Override
     public void execute() {
+        receiver.delete(index);
+        printAction();
 
     }
 
 
     @Override
     public void printAction() {
-        System.out.println("Deleted " + index);
+        System.out.println("Delete");
         //!print the details too for easier checking
     }
 }

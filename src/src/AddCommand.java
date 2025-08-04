@@ -1,23 +1,24 @@
 public class AddCommand implements Command{
     Receiver receiver;
-    String[] params;
+    String[] paramsStr;
     String firstName, lastName, email;
 
     //constructor
-    public AddCommand(Receiver receiver, String[] params) {
-        this.receiver = receiver;
-        this.params = params;
+    public AddCommand(Receiver receiver, String params) {
+        paramsStr = params.split(" ");
         //params contain 3 values (payload 1) <data1> <data2> <data3>
-        email = params[2];
+        email = paramsStr[2];
 
-        //!check if the email value follows the correct format with regex, only execute if email is of correct
-        //! format, otherwise action fails and  print error message.
-        if (checkEmail(email)){
-            execute();
-            printAction();
+        //check the email format, do not assign receiver if the email format is wrong.
+        try {
+            if (!checkEmail(email)){
+                throw new IllegalArgumentException("Invalid email. Please enter valid email address");
+            }
+            this.receiver = receiver;
         }
-        else {
-            System.out.println("Invalid email. Please enter valid email address");
+        catch (IllegalArgumentException iae) {
+            System.out.println("Invalid email");
+
         }
 
     }
@@ -25,8 +26,7 @@ public class AddCommand implements Command{
 
     @Override
     public void execute() {
-        receiver.add(params);
-
+        receiver.add(paramsStr);
     }
 
     //print the action at the end

@@ -7,20 +7,23 @@ public class Receiver {
     String index;
 
 
+    //FIXME addCommand logic
     public void add(String[] params){
         //params contain 3 values (payload 1) <data1> <data2> <data3>
-
         dataStore.add(params);
     }
 
-    public void delete(String[] params){
-
+    //FIXME deleteCommand logic
+    public void delete(int index){
+        dataStore.remove(index-1);
     }
 
+    //FIXME updateCommand logic
     public void update(){
 
     }
 
+    //FIXME listCommand logic
     public void list (){
         for (String[] strings : dataStore) {
             index = "0"+Integer.toString(dataStore.indexOf(strings)+1)+". ";
@@ -32,6 +35,7 @@ public class Receiver {
 
     }
 
+    //FIXME undoCommand logic
     public void undo (){
 
     }

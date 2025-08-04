@@ -11,7 +11,6 @@ public class Invoker {
     public Invoker(Command[] cmdToExecute) {
         setCommandsForExecution(cmdToExecute);
         executeCommand(CommandStackHistory);
-
     }
 
     //takes an array of Command, and push each command to the Stack CommandStackHistory
@@ -26,7 +25,12 @@ public class Invoker {
     //execute all the command in the stack
     public void executeCommand(Stack<Command> history) {
         for (Command cmd : history) {
-            cmd.execute();
+            try{
+                cmd.execute();
+            }
+            catch (NullPointerException npe) {
+//                System.out.println("invalid input is skipped");
+            }
         }
     }
 }
