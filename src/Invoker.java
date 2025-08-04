@@ -5,13 +5,13 @@ public class Invoker {
 
     Command[] cmdToExecute;
 
-    Stack<Command> CommandStackHistory = new Stack<Command>();
+
 
     //! double check if input parameters for the constructor can be done this way.
-    public Invoker(Command[] cmdToExecute) {
-        setCommandsForExecution(cmdToExecute);
-        executeCommand(CommandStackHistory);
-    }
+//    public Invoker(Command[] cmdToExecute) {
+//        setCommandsForExecution(cmdToExecute);
+//        executeCommand(CommandStackHistory);
+//    }
 
     //takes an array of Command, and push each command to the Stack CommandStackHistory
     public void setCommandsForExecution(Command[] cmdToExecute) {
