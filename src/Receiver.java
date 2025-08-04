@@ -35,9 +35,23 @@ public class Receiver {
 
     }
 
-    //FIXME undoCommand logic
-    public void undo (){
-
+    //FIXME undoCommand logic need to rethink how to do
+    public static void undo(){
+        String[] commandSplit = commandStackHistory.peek().split("\\s");
+        switch (commandSplit[0]){
+            case "add":
+                arrayList.remove(arrayList.size()-1);
+                break;
+            case "delete":
+                arrayList.add((Integer.parseInt(commandSplit[1])-1), commandSplit[2] + " " + commandSplit[3] + " " + commandSplit[4]);
+                break;
+            case "update":
+                arrayList.remove(Integer.parseInt(commandSplit[1])-1);
+                arrayList.add((Integer.parseInt(commandSplit[1])-1), commandSplit[2] + " " + commandSplit[3] + " " + commandSplit[4]);
+                break;
+        }
+        commandStackHistory.pop();
+        save();
     }
 
 
