@@ -1,3 +1,6 @@
+package Command;
+import Receiver.Receiver;
+
 public class AddCommand implements Command{
     Receiver receiver;
     String[] paramsStr;
