@@ -16,4 +16,9 @@ public class ListCommand implements Command {
         System.out.println("List");
 
     }
+
+    @Override
+    public void undo(){}
+
+
 }

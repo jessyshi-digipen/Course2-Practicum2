@@ -2,6 +2,7 @@ public class DeleteCommand implements Command {
     Receiver receiver;
     String params;
     int index;
+    static String[] deletedElement;
 
     public DeleteCommand(Receiver receiver, String params) {
         this.receiver = receiver;
@@ -16,7 +17,7 @@ public class DeleteCommand implements Command {
 
     @Override
     public void execute() {
-        receiver.delete(index);
+        deletedElement = receiver.delete(index);
         printAction();
 
     }
@@ -26,5 +27,11 @@ public class DeleteCommand implements Command {
     public void printAction() {
         System.out.println("Delete");
         //!print the details too for easier checking
+    }
+    @Override
+    public void undo() {
+        receiver.deleteUndo(index,deletedElement);
+        System.out.println("Undo");
+
     }
 }

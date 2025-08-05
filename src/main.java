@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,45 +9,34 @@ public class main {
     public static void main(String[] args) {
 
 
-
+        //initialize CommandStackHistory
         Stack<Command> CommandStackHistory = new Stack<Command>();
 
-//        Stack<Command> commandStack = new Stack<Command>();
+        //Initialize receiver object
         Receiver stafflist1 = new Receiver();
-        String params1 = "First_name Last_name Email";
-        String params2 = "John Doe simple@example.com";
-        String params3 = "Hanna Moon tots@potatoes.com";
 
-        AddCommand cmd1 = new AddCommand(stafflist1, params1);
-        AddCommand cmd2 = new AddCommand(stafflist1, params2);
-        AddCommand cmd3 = new AddCommand(stafflist1, params3);
-        ListCommand cmd4 = new ListCommand(stafflist1);
-        DeleteCommand cmd5 = new DeleteCommand(stafflist1,"1");
+        //Initialize command objects and command array cmdlist
+        AddCommand cmd1 = new AddCommand(stafflist1,"First_name Last_name Email");
+        AddCommand cmd2 = new AddCommand(stafflist1, "John Doe simple@example.com");
+        AddCommand cmd3 = new AddCommand(stafflist1, "Hanna Moon tetter.tots@potatoesarelife.com");
+        AddCommand cmd4 = new AddCommand(stafflist1, "Ah Boon green-tea@teaforlife.com");
+        ListCommand cmd5 = new ListCommand(stafflist1);
+        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam");
+        UpdateCommand cmd7 = new UpdateCommand(stafflist1, "1 blue bell ice-cream@alaskaFields.org");
+        DeleteCommand cmd8 = new DeleteCommand(stafflist1,"1");
+        UndoCommand cmd9 = new UndoCommand(stafflist1);
 
-//        commandStack.push(cmd1);
-//        commandStack.push(cmd2);
-//        commandStack.push(cmd3);
-        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd5,cmd4};
-        Command[] cmdlist2 = {cmd1,cmd2,cmd3,cmd4};
-//        Invoker invoker = new Invoker(cmdlist);
-        Invoker invoker2 = new Invoker(cmdlist);
+//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd5,cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd9, cmd5};
+//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5, cmd5, cmd9, cmd5};
+        Command[] cmdlist = {cmd1,cmd2, cmd7, cmd9,cmd5};
+
+        //Initialize invoker object
+        Invoker invoker = new Invoker();
+        invoker.setCommandsForExecution(cmdlist);
+
+        invoker.executeCommand(CommandStackHistory);
 
 
-        //email regex check
-//        String str = ".,.zjessyshg..i109.97@gmail.com";
-//        String local = "^[a-zA-Z0-9]+([a-zA-Z0-9_.-]?[a-zA-Z0-9]+)+";
-//        String domain = "@[a-zA-Z0-9]+([a-zA-Z0-9_.-]?[a-zA-Z0-9]+)+\\.[a-z]{2,3}$";
-//        String regex = local + domain;
-//        //([A-Za-z0-9._-]*[A-Za-z0-9]+)*@[A-Za-z0-9]+([A-Za-z0-9.-]*[A-Za-z0-9]+)*\\. " +"[a-z]{2,4}";
-//        Pattern pattern = Pattern.compile(regex);
-//        Matcher matcher = pattern.matcher(str);
-//
-//        if(matcher.find()){
-//             System.out.println(matcher.group()+ "true");
-//        }
-//        else{
-//            System.out.println(matcher.find());
-//        }
 
     }
 }
