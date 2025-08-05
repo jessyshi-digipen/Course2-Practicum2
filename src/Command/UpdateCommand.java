@@ -1,3 +1,6 @@
+package Command;
+import Receiver.Receiver;
+
 public class UpdateCommand implements Command {
 
     Receiver receiver;
