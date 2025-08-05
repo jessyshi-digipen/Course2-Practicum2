@@ -1,3 +1,6 @@
+package Command;
+import Receiver.Receiver;
+
 public class UndoCommand implements Command{
     Receiver receiver;
     public UndoCommand(Receiver receiver) {
