@@ -10,7 +10,7 @@ public interface Command {
 
     //use this: inputchecker includes the email checker. Returns true for good to go else false 
     //checks for 3 args, if true, further check the <data3> by using the emailchecker method 
-    public boolean inputChecker(String[] params){
+    default boolean inputChecker(String[] params){
     if  (params.length !=3 ){
         System.out.println("Wrong number of arguments");
         return false;
@@ -24,7 +24,7 @@ public interface Command {
     if (matcher.find()){
         if (data3.contains("@")){
             //conduct valid email check by splitting into local and domain
-            return emailChecker(data3);
+            return checkEmail(data3);
         }
         else {
 //                System.out.println("This is just a string: " + inputStr);
@@ -39,7 +39,7 @@ public interface Command {
 }
     
     //email checker contains business logic for data3
-    public boolean checkEmail(String email){
+    default boolean checkEmail(String email){
         //check for @., a@. a@b., @.b edge cases
         Pattern patternZero = Pattern.compile("(^@)|(@\\.)|(\\.$)");
         Matcher matcherZero = patternZero.matcher(email);
