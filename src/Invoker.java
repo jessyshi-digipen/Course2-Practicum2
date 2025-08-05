@@ -7,30 +7,35 @@ public class Invoker {
 
 
 
-    //! double check if input parameters for the constructor can be done this way.
-//    public Invoker(Command[] cmdToExecute) {
-//        setCommandsForExecution(cmdToExecute);
-//        executeCommand(CommandStackHistory);
-//    }
-
     //takes an array of Command, and push each command to the Stack CommandStackHistory
     public void setCommandsForExecution(Command[] cmdToExecute) {
         this.cmdToExecute = cmdToExecute;
 
-        for (Command command : cmdToExecute ) {
-            CommandStackHistory.push(command);
-        }
     }
 
     //execute all the command in the stack
     public void executeCommand(Stack<Command> history) {
-        for (Command cmd : history) {
-            try{
+        for (Command cmd : cmdToExecute) {
+            //Undo last undoable command if exist (update, add, delete)
+            if (cmd.getClass() == UndoCommand.class) {
+                while (!history.isEmpty() && history.peek().getClass() == ListCommand.class) {
+                    history.pop();
+                }
+                if (!history.isEmpty()) {
+                    Command lastCmd = history.pop();
+                    lastCmd.undo();
+                }
+            }
+            else{
                 cmd.execute();
+//
+                if (cmd.getClass() != ListCommand.class) {
+                    history.push(cmd);
+                }
             }
-            catch (NullPointerException npe) {
-//                System.out.println("invalid input is skipped");
-            }
+
+
+
         }
     }
 }
