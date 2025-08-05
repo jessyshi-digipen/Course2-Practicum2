@@ -76,7 +76,7 @@ public class UpdateCommand implements Command {
 
     @Override
     public void undo() {
-        System.out.println("Undo Update");
+        System.out.println("Undo");
         receiver.update(index, updatedParams);
     }
 }
