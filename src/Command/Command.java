@@ -10,33 +10,35 @@ public interface Command {
 
     //use this: inputchecker includes the email checker. Returns true for good to go else false 
     //checks for 3 args, if true, further check the <data3> by using the emailchecker method 
+    
     default boolean inputChecker(String[] params){
-    if  (params.length !=3 ){
-        System.out.println("Wrong number of arguments");
-        return false;
-    }
-    String data3 = params[2];
-    //check for a single email address or Latin letters, digits 0 to 9 and underscores
-    //email address takes in all numbers, - and . for now and will be subjected to further checks
-    Pattern pattern = Pattern.compile("^((\\w|-|\\.)*@(\\w|-|\\.)*\\.(\\w|-|\\.)*)$|^(\\w*)$");
-    Matcher matcher = pattern.matcher(data3);
-
-    if (matcher.find()){
-        if (data3.contains("@")){
-            //conduct valid email check by splitting into local and domain
-            return checkEmail(data3);
+        String[] paramArr = params.split(" ");
+        if  (paramArr.length !=3 ){
+            System.out.println("Wrong number of arguments");
+            return false;
+        }
+        String data3 = params[2];
+        //check for a single email address or Latin letters, digits 0 to 9 and underscores
+        //email address takes in all numbers, - and . for now and will be subjected to further checks
+        Pattern pattern = Pattern.compile("^((\\w|-|\\.)*@(\\w|-|\\.)*\\.(\\w|-|\\.)*)$|^(\\w*)$");
+        Matcher matcher = pattern.matcher(data3);
+    
+        if (matcher.find()){
+            if (data3.contains("@")){
+                //conduct valid email check by splitting into local and domain
+                return checkEmail(data3);
+            }
+            else {
+    //                System.out.println("This is just a string: " + inputStr);
+            }
+            return true;
         }
         else {
-//                System.out.println("This is just a string: " + inputStr);
+            System.out.println("Error in input: "+data3);
+            System.out.println("Please input a valid email address or Latin letters, digits 0 to 9 and underscores");
+            return false;
         }
-        return true;
     }
-    else {
-        System.out.println("Error in input: "+data3);
-        System.out.println("Please input a valid email address or Latin letters, digits 0 to 9 and underscores");
-        return false;
-    }
-}
     
     //email checker contains business logic for data3
     default boolean checkEmail(String email){
