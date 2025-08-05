@@ -18,21 +18,26 @@ public class AddCommand implements Command{
         }
         catch (IllegalArgumentException iae) {
             System.out.println("Invalid email");
-
         }
-
     }
-
 
     @Override
     public void execute() {
         receiver.add(paramsStr);
+        printAction();
     }
 
     //print the action at the end
     @Override
     public void printAction() {
         System.out.println("Add");
-        //!print the details too for easier checking
+    }
+    
+    @Override
+    public void undo() {
+        int deleteIndex = receiver.addUndo();
+        receiver.delete(deleteIndex);
+        System.out.println("Undo");
+
     }
 }
