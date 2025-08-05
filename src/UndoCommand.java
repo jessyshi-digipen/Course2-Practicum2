@@ -1,15 +1,17 @@
 public class UndoCommand implements Command{
+    Receiver receiver;
+    public UndoCommand(Receiver receiver) {
+        this.receiver=receiver;
+    }
 
-    public void UndoCommand(Receiver receiver) {
-        execute();
+    @Override
+    public void execute() {
         printAction();
     }
 
     @Override
-    public void execute() {}
+    public void printAction() {}
 
     @Override
-    public void printAction() {
-
-    }
+    public void undo() {}
 }
