@@ -1,3 +1,6 @@
+package Command;
+import Receiver.Receiver;
+
 public class DeleteCommand implements Command {
     Receiver receiver;
     String params;
