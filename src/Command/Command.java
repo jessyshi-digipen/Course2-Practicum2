@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public interface Command {
     void execute();
     void printAction();
+    void undo();
 
     //use this: inputchecker includes the email checker. Returns true for good to go else false 
     //checks for 3 args, if true, further check the <data3> by using the emailchecker method 
