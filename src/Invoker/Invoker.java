@@ -8,17 +8,13 @@ import CustomException.CustomException;
 import java.util.Stack;
 
 public class Invoker {
-
     Command[] cmdToExecute;
-
-
 
     //takes an array of Command.Command, and push each command to the Stack CommandStackHistory
     public void setCommandsForExecution(Command[] cmdToExecute) {
         this.cmdToExecute = cmdToExecute;
 
     }
-
     //execute all the command in the stack
     public void executeCommand(Stack<Command> history) {
         for (Command cmd : cmdToExecute) {
@@ -36,19 +32,14 @@ public class Invoker {
                 }
                 else{
                     cmd.execute();
-//
                     if (cmd.getClass() != ListCommand.class) {
                         history.push(cmd);
                     }
                 }
             }
             catch (CustomException e){
-                System.out.println(e.getmessage());
+                System.out.println(e.getMessage());
             }
-
-
-
-
         }
     }
 }
