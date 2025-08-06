@@ -49,14 +49,6 @@ public class main {
         invoker.executeCommand(CommandStackHistory);
         Receiver.writeUpdatedDataStoreToFile();
 
-//        commandStack.push(cmd1);
-//        commandStack.push(cmd2);
-//        commandStack.push(cmd3);
-//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd5,cmd4};
-//        Command[] cmdlist2 = {cmd1,cmd2,cmd3,cmd4};
-//        Invoker invoker = new Invoker(cmdlist);
-//        Invoker invoker2 = new Invoker(cmdlist);
-
 //        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"1 Adam Black fdsa dsff");
 //        DeleteCommand cmd7 = new DeleteCommand(stafflist1,"d");
 
