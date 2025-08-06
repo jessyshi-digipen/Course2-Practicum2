@@ -37,6 +37,12 @@ public class AddCommand implements Command{
 
     @Override
     public void execute() {
+
+        //capitalize first 2 elements for first name and lastname
+        for(int j=0;j<2;j++){
+            paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
+        }
+
         receiver.add(-1,paramsStr);
         printAction();
     }

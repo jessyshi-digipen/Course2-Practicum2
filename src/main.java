@@ -23,8 +23,8 @@ public class main {
         Receiver stafflist1 = new Receiver();
 
         //Initialize command objects and command array cmdlist
-        AddCommand cmd1 = new AddCommand(stafflist1,"First_name Last_name Email");
-        AddCommand cmd2 = new AddCommand(stafflist1, "John Doe simple@example.com");
+        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name Email");
+        AddCommand cmd2 = new AddCommand(stafflist1, "fohn foe simple@example.com");
         AddCommand cmd3 = new AddCommand(stafflist1, "Hanna Moon tetter.tots@potatoesarelife.com");
         AddCommand cmd4 = new AddCommand(stafflist1, "Ah Boon green-tea@teaforlife.com");
         ListCommand cmd5 = new ListCommand(stafflist1);

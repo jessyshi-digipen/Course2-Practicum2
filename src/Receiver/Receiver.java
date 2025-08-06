@@ -62,10 +62,7 @@ public class Receiver {
             System.out.print(index);
 
             Stringlist = dataStore.get(i);
-            //capitalize first 2 elements
-            for(int j=0;j<2;j++){
-                Stringlist[j]= Stringlist[j].substring(0,1).toUpperCase() + Stringlist[j].substring(1).toLowerCase();
-            }
+
             for (String params : Stringlist )
                 System.out.print(params+" ");
             System.out.println();
