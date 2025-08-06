@@ -1,5 +1,7 @@
 package Receiver;
 
+import CustomException.CustomException;
+
 import java.util.ArrayList;
 
 public class Receiver {
@@ -23,14 +25,24 @@ public class Receiver {
 
     //FIXME deleteCommand logic
     public String[] delete(int index){
-        if (index==-1){
-            //undo add action
-            return dataStore.removeLast();
+        try{
+            if (dataStore.isEmpty()){
+                throw new CustomException("There is nothing to delete!");
+            }
+            if (index==-1){
+                //undo add action
+                return dataStore.removeLast();
+            }
+            else{
+                //delete at index-1(as index input starts from 1)
+                return dataStore.remove(index-1);
+            }
         }
-        else{
-            //delete at index-1(as index input starts from 1)
-            return dataStore.remove(index-1);
+        catch (CustomException ce){
+            System.out.println(ce.getMessage());
         }
+        return new String[1];
+
     }
 
 
