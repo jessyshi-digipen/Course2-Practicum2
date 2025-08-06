@@ -17,4 +17,9 @@ public class UndoCommand implements Command{
 
     @Override
     public void undo() {}
+
+    @Override
+    public boolean checkUndo(){
+        return true;
+    }
 }
