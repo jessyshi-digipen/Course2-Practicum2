@@ -9,9 +9,8 @@ public class Receiver {
     static ArrayList<String[]> dataStore = new ArrayList<String[]>();
     String index;
     String[] Stringlist;
+    static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
-
-    //FIXME addCommand and undodelete combined
     public void add(int index, String[] params){
         //params contain 3 values (payload 1) <data1> <data2> <data3>
         if (index==-1){
@@ -22,8 +21,6 @@ public class Receiver {
         }
     }
 
-
-    //FIXME deleteCommand logic
     public String[] delete(int index){
         try{
             if (dataStore.isEmpty()){
@@ -42,11 +39,8 @@ public class Receiver {
             System.out.println(ce.getMessage());
         }
         return new String[1];
-
     }
 
-
-    //FIXME updateCommand logic combined
     public String[] update(int index, String[] params){
         String[] updatedParams = dataStore.get(index-1);
         String[] toBeUpdated = new String[0];
@@ -66,8 +60,7 @@ public class Receiver {
         dataStore.set(index-1, toBeUpdated);
         return updatedParams;
     }
-
-    //FIXME listCommand logic
+    
     public void list (){
         for (int i = 0; i<dataStore.size(); i++) {
             index = String.format("%02d. ", i+1);
@@ -79,12 +72,50 @@ public class Receiver {
                 System.out.print(params+" ");
             System.out.println();
         }
-
     }
 
+     public static boolean checkIfFileExistElseCreate(){
+        if (Files.notExists(dataStoreFilePath)) {
+//            System.out.println("File does not exist, new file being created...");
+            File newFile = new File(dataStoreFilePath.toString());
 
+            try {
+                newFile.createNewFile();
+//             System.out.println("file successfully created? " + newFile.exists() );
+            } catch (IOException e){
+                e.getMessage();
+                return false;
+            }
+            return true;
+        }
+        else {
+            return true;
+        }
+    }
 
+    public static void readFileToDataStore(){
+        if(checkIfFileExistElseCreate()){
+            try (BufferedReader br = Files.newBufferedReader(dataStoreFilePath)) {
+                while (br.ready()) {
+                    String[] brString = br.readLine().split("\\s");
+                    dataStore.add(brString);
+                }
+            }catch (IOException e){
+                System.out.print(e.getMessage());
+            }
+        }
+    }
 
-
-
+    public static void writeUpdatedDataStoreToFile(){
+        String tempString = "";
+        for (int i = 0; i < dataStore.size(); i++) {
+            String line = dataStore.get(i)[0] + " " + dataStore.get(i)[1] + " "  + dataStore.get(i)[2] + "\n";
+            tempString += line;
+        }
+        try (BufferedWriter bw = Files.newBufferedWriter(dataStoreFilePath)) {
+            bw.write(tempString);
+        } catch (IOException e){
+            e.getMessage();
+        }
+    }
 }
