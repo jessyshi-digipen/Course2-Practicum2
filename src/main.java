@@ -15,12 +15,13 @@ import java.util.Stack;
 public class main {
     public static void main(String[] args) throws CustomException {
 
-
-
         Stack<Command> CommandStackHistory = new Stack<Command>();
+        
 
 //        Stack<Command> commandStack = new Stack<Command>();
         Receiver stafflist1 = new Receiver();
+        //initialise file and store file contents to DataStore
+        Receiver.readFileToDataStore();
 
         //Initialize command objects and command array cmdlist
         AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name Email");
@@ -46,6 +47,7 @@ public class main {
         invoker.setCommandsForExecution(cmdlist);
 
         invoker.executeCommand(CommandStackHistory);
+        Receiver.writeUpdatedDataStoreToFile();
 
 //        commandStack.push(cmd1);
 //        commandStack.push(cmd2);
