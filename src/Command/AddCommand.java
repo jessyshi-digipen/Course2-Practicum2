@@ -6,6 +6,7 @@ public class AddCommand implements Command{
     private Receiver receiver;
     private String params;
     private String[] paramsStr;
+    private String email;
 
     //constructor
     public AddCommand(Receiver receiver, String params) {
@@ -25,8 +26,14 @@ public class AddCommand implements Command{
             throw new CustomException("Invalid email. Please enter valid email address");
         }
         //capitalize first 2 elements for first name and lastname
-        for(int j=0;j<2;j++){
-            paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
+        //capitalize 3rd element if not a email
+        if (paramsStr[2].contains("@")){
+            paramsStr[2].substring(0,1).toUpperCase();
+        }
+        else {
+            for(int j=0;j<2;j++){
+                paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
+            }
         }
 
         receiver.add(-1,paramsStr);
@@ -39,6 +46,11 @@ public class AddCommand implements Command{
         receiver.delete(-1);
     }
 
+    @Override
+    public boolean checkUndo(){
+        return false;
+    }
+}
     @Override
     public boolean checkUndo(){
         return false;
