@@ -7,6 +7,7 @@ public interface Command {
     void execute();
     void printAction();
     void undo();
+    boolean checkUndo();
 
 
     //FIXME add in email format checks logic
