@@ -41,7 +41,10 @@ public class Receiver {
         }
     }
 
-    public String[] update(int index, String[] params){
+    public String[] update(int index, String[] params) throws CustomException {
+        if (index<0 | index>dataStore.size()){
+            throw new CustomException("index to update not found");
+        }
         String[] updatedParams = dataStore.get(index-1);
         String[] toBeUpdated = new String[0];
         switch (params.length){
