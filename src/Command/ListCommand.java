@@ -10,7 +10,7 @@ public class ListCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws CustomException{
         System.out.println("List");
         receiver.list();
     }
