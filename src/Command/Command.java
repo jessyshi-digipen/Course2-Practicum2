@@ -9,7 +9,6 @@ public interface Command {
     boolean checkUndo();
 
 
-    //FIXME add in email format checks logic
     public default boolean checkEmail(String email){
 
         String local = "^([a-zA-Z0-9_]+([.-]?[a-zA-Z0-9_]+)+";
@@ -23,6 +22,4 @@ public interface Command {
         return matcher.find();
 
     }
-
-
 }
