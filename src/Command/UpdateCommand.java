@@ -89,4 +89,9 @@ public class UpdateCommand implements Command {
         System.out.println("Undo");
         receiver.update(index, updatedParams);
     }
+
+    @Override
+    public boolean checkUndo(){
+        return false;
+    }
 }
