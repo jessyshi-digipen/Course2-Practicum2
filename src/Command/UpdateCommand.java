@@ -74,7 +74,7 @@ public class UpdateCommand implements Command {
     }
 
     @Override
-    public void undo() {
+    public void undo() throws CustomException {
         receiver.update(index, updatedParams);
     }
 
