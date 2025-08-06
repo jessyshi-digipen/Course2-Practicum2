@@ -6,7 +6,6 @@ public class AddCommand implements Command{
     private Receiver receiver;
     private String params;
     private String[] paramsStr;
-    private String email;
 
     //constructor
     public AddCommand(Receiver receiver, String params) {
