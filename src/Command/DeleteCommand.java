@@ -1,3 +1,7 @@
+package Command;
+import CustomException.CustomException;
+import Receiver.Receiver;
+
 public class DeleteCommand implements Command {
     Receiver receiver;
     String params;
@@ -8,10 +12,13 @@ public class DeleteCommand implements Command {
         this.receiver = receiver;
         //index to delete
         this.params = params;
-        this.index = Integer.parseInt(params);
-
-        //! check index is indeed numerical input: try catch
-
+        //parse to integer, otherwise throw custom exception
+        try{
+            this.index = Integer.parseInt(params);
+        } catch (NumberFormatException e) {
+            CustomException ce = new CustomException("Please enter a valid index for deleteCommand");
+            System.out.println(ce.getMessage());
+        }
 
     }
 
@@ -26,12 +33,15 @@ public class DeleteCommand implements Command {
     @Override
     public void printAction() {
         System.out.println("Delete");
-        //!print the details too for easier checking
     }
     @Override
     public void undo() {
-        receiver.deleteUndo(index,deletedElement);
+        //use add to undo delete action
+        receiver.add(index,deletedElement);
         System.out.println("Undo");
 
     }
+
+
+
 }

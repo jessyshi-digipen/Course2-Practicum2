@@ -1,3 +1,6 @@
+package Command;
+import Receiver.Receiver;
+
 public class UndoCommand implements Command{
     Receiver receiver;
     public UndoCommand(Receiver receiver) {
@@ -10,9 +13,7 @@ public class UndoCommand implements Command{
     }
 
     @Override
-    public void printAction() {
-
-    }
+    public void printAction() {}
 
     @Override
     public void undo() {}

@@ -1,12 +1,19 @@
-import java.util.ArrayList;
+import Command.Command;
+import Command.AddCommand;
+import Command.DeleteCommand;
+import Command.UndoCommand;
+import Command.UpdateCommand;
+import Command.ListCommand;
+import CustomException.CustomException;
+import Invoker.Invoker;
+import Receiver.Receiver;
+
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomException {
 
 
         //initialize CommandStackHistory
@@ -21,20 +28,23 @@ public class main {
         AddCommand cmd3 = new AddCommand(stafflist1, "Hanna Moon tetter.tots@potatoesarelife.com");
         AddCommand cmd4 = new AddCommand(stafflist1, "Ah Boon green-tea@teaforlife.com");
         ListCommand cmd5 = new ListCommand(stafflist1);
-        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam");
+        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam Black");
         UpdateCommand cmd7 = new UpdateCommand(stafflist1, "1 blue bell ice-cream@alaskaFields.org");
         DeleteCommand cmd8 = new DeleteCommand(stafflist1,"1");
         UndoCommand cmd9 = new UndoCommand(stafflist1);
 
-//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd5,cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd9, cmd5};
-//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5, cmd5, cmd9, cmd5};
-        Command[] cmdlist = {cmd1,cmd2, cmd7, cmd9,cmd5};
+        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
+//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
+//        Command[] cmdlist = {cmd1};
 
         //Initialize invoker object
         Invoker invoker = new Invoker();
         invoker.setCommandsForExecution(cmdlist);
 
         invoker.executeCommand(CommandStackHistory);
+
+//        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"1 Adam Black fdsa dsff");
+//        DeleteCommand cmd7 = new DeleteCommand(stafflist1,"d");
 
 
 
