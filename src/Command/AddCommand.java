@@ -34,7 +34,7 @@ public class AddCommand implements Command{
     }
 
     @Override
-    public void undo() {
+    public void undo() throws CustomException{
         //use index-1 to indicate this is an undo addCommand
         receiver.delete(-1);
     }
