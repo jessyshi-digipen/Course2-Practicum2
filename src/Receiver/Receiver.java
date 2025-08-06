@@ -63,6 +63,9 @@ public class Receiver {
                 toBeUpdated = new String[] {params[0], tempArr[1],tempArr[2]};
                 break;
         }
+        for(int j=0;j<2;j++){
+            toBeUpdated[j]= toBeUpdated[j].substring(0,1).toUpperCase() + toBeUpdated[j].substring(1).toLowerCase();
+        }
         dataStore.set(index-1, toBeUpdated);
         return updatedParams;
     }

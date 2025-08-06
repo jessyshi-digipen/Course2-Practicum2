@@ -25,20 +25,15 @@ public class DeleteCommand implements Command {
     @Override
     public void execute() {
         deletedElement = receiver.delete(index);
-        printAction();
-
-    }
-
-
-    @Override
-    public void printAction() {
         System.out.println("Delete");
+
     }
+
+
     @Override
     public void undo() {
         //use add to undo delete action
         receiver.add(index,deletedElement);
-        System.out.println("Undo");
     }
 
     @Override

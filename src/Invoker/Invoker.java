@@ -24,14 +24,10 @@ public class Invoker {
                 if (cmd == null) {
                     throw new CustomException("Command cannot be null");
                 }
-
+                cmd.execute();
                 //Check for UndoCommand
-                if (cmd.getClass() == UndoCommand.class) {
-                    //FIXME may be ok to remove the ListCommand check as ListCommands would not be pushed to history
-                    // (row 46) ==> to check again
-//                    while (!history.isEmpty() && history.peek().getClass() == ListCommand.class) {
-//                        history.pop();
-//                    }
+                if (cmd.checkUndo()) {
+
 
                     //undo the last command
                     if (!history.isEmpty()) {
@@ -41,7 +37,6 @@ public class Invoker {
                 }
                 else{
                     //execute commands (other than undo)
-                    cmd.execute();
                     if (cmd.getClass() != ListCommand.class) {
                         history.push(cmd);
                     }

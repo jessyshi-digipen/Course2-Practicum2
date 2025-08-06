@@ -73,20 +73,16 @@ public class UpdateCommand implements Command {
 
     @Override
     public void execute() {
+        //capitalize first 2 elements for first name and lastname
+
         updatedParams = receiver.update(index,paramsToBeUpdated);
-        printAction();
-    }
-
-
-
-    @Override
-    public void printAction() {
         System.out.println("Update");
     }
 
+
+
     @Override
     public void undo() {
-        System.out.println("Undo");
         receiver.update(index, updatedParams);
     }
 

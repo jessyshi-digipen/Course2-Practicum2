@@ -9,11 +9,9 @@ public class UndoCommand implements Command{
 
     @Override
     public void execute() {
-        printAction();
+        System.out.println("Undo");
     }
 
-    @Override
-    public void printAction() {}
 
     @Override
     public void undo() {}

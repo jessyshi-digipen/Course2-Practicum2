@@ -44,21 +44,14 @@ public class AddCommand implements Command{
         }
 
         receiver.add(-1,paramsStr);
-        printAction();
-    }
-
-    //print the action at the end
-    @Override
-    public void printAction() {
         System.out.println("Add");
     }
+
 
     @Override
     public void undo() {
         //use index-1 to indicate this is an undo addCommand
         receiver.delete(-1);
-        System.out.println("Undo");
-
     }
 
     @Override

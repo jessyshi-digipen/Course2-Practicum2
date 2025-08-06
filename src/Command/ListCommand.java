@@ -10,15 +10,11 @@ public class ListCommand implements Command {
 
     @Override
     public void execute() {
-        printAction();
-        receiver.list();
-    }
-
-    @Override
-    public void printAction() {
         System.out.println("List");
+        receiver.list();
 
     }
+
 
     @Override
     public void undo(){}

@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public interface Command {
     void execute();
-    void printAction();
     void undo();
     boolean checkUndo();
 
