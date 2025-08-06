@@ -24,4 +24,9 @@ public class ListCommand implements Command {
     public void undo(){}
 
 
+    @Override
+    public boolean checkUndo(){
+        return false;
+    }
+
 }
