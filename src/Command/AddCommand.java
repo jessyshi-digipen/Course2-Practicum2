@@ -60,4 +60,9 @@ public class AddCommand implements Command{
         System.out.println("Undo");
 
     }
+
+    @Override
+    public boolean checkUndo(){
+        return false;
+    }
 }
