@@ -39,7 +39,11 @@ public class DeleteCommand implements Command {
         //use add to undo delete action
         receiver.add(index,deletedElement);
         System.out.println("Undo");
+    }
 
+    @Override
+    public boolean checkUndo(){
+        return false;
     }
 
 
