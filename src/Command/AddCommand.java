@@ -12,7 +12,7 @@ public class AddCommand implements Command{
         //split the params string and ensure correct number of inputs, otherwise, throw exception
         try {
             paramsStr = params.split(" ");
-            if(paramsStr.length != 2) {
+            if(paramsStr.length != 3) {
                 throw new CustomException("Please enter correct number of parameters for AddCommand");
             }
         }
