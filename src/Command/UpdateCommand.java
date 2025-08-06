@@ -56,7 +56,7 @@ public class UpdateCommand implements Command {
                     paramsToBeUpdated = new String[]{paramsStr[1], paramsStr[2], paramsStr[3]};
                 }
                 else {
-                    System.out.println("Invalid email. Please enter valid email address");
+                    throw new CustomException("Invalid email. Please enter valid email address");
                 }
                 break;
             case 3:
@@ -66,8 +66,7 @@ public class UpdateCommand implements Command {
                 paramsToBeUpdated = new String[]{paramsStr[1]};
                 break;
             default:
-                System.out.println("Please enter data to be updated");
-                break;
+                throw new CustomException("Please enter data to be updated");
         }
 
         updatedParams = receiver.update(index,paramsToBeUpdated);
@@ -83,3 +82,4 @@ public class UpdateCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
+}
