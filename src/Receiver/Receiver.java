@@ -98,13 +98,12 @@ public class Receiver {
             return true;
         }
     }
-
     public static void readFileToDataStore(){
         if(checkIfFileExistElseCreate()){
-            try (BufferedReader br = Files.newBufferedReader(dataStoreFilePath)) {
-                while (br.ready()) {
-                    String[] brString = br.readLine().split("\\s");
-                    dataStore.add(brString);
+            try {
+                List<String> lines = Files.readAllLines(dataStoreFilePath);
+                for  (String line: lines) {
+                    dataStore.add(line.split(" "));
                 }
             }catch (IOException e){
                 System.out.print(e.getMessage());
@@ -118,10 +117,11 @@ public class Receiver {
             String line = dataStore.get(i)[0] + " " + dataStore.get(i)[1] + " "  + dataStore.get(i)[2] + "\n";
             tempString += line;
         }
-        try (BufferedWriter bw = Files.newBufferedWriter(dataStoreFilePath)) {
-            bw.write(tempString);
+        try {
+            Files.writeString(dataStoreFilePath, tempString);
         } catch (IOException e){
             e.getMessage();
         }
     }
+    
 }
