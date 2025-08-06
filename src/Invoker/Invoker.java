@@ -8,7 +8,7 @@ import CustomException.CustomException;
 import java.util.Stack;
 
 public class Invoker {
-    Command[] cmdToExecute;
+    private Command[] cmdToExecute;
 
     //stores the commands to be executed
     public void setCommandsForExecution(Command[] cmdToExecute) {
@@ -27,7 +27,6 @@ public class Invoker {
                 cmd.execute();
                 //Check for UndoCommand
                 if (cmd.checkUndo()) {
-
 
                     //undo the last command
                     if (!history.isEmpty()) {

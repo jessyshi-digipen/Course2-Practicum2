@@ -12,10 +12,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 public class Receiver {
 
-    static ArrayList<String[]> dataStore = new ArrayList<String[]>();
-    String index;
-    String[] Stringlist;
-    static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
+    private static ArrayList<String[]> dataStore = new ArrayList<String[]>();
+    private String index;
+    private String[] Stringlist;
+    private static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
     public void add(int index, String[] params){
         //params contain 3 values (payload 1) <data1> <data2> <data3>

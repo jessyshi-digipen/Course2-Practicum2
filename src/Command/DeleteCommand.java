@@ -3,10 +3,10 @@ import CustomException.CustomException;
 import Receiver.Receiver;
 
 public class DeleteCommand implements Command {
-    Receiver receiver;
-    String params;
-    int index;
-    static String[] deletedElement;
+    private Receiver receiver;
+    private String params;
+    private int index;
+    private static String[] deletedElement;
 
     public DeleteCommand(Receiver receiver, String params) {
         this.receiver = receiver;
@@ -14,7 +14,7 @@ public class DeleteCommand implements Command {
         this.params = params;
         //parse to integer, otherwise throw custom exception
         try{
-            this.index = Integer.parseInt(params);
+            index = Integer.parseInt(params);
         } catch (NumberFormatException e) {
             CustomException ce = new CustomException("Please enter a valid index for deleteCommand");
             System.out.println(ce.getMessage());
@@ -26,7 +26,6 @@ public class DeleteCommand implements Command {
     public void execute() {
         deletedElement = receiver.delete(index);
         System.out.println("Delete");
-
     }
 
 

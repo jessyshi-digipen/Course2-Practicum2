@@ -38,7 +38,7 @@ public class main {
 //        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
         //multiple list
 //       Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
-         Command[] cmdlist = {cmd1, cmd2, cmd5,cmd8, cmd5, cmd9, cmd5};
+         Command[] cmdlist = {cmd1, cmd2, cmd5};
 
 //        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name");
 //        Command[] cmdlist = {cmd1};

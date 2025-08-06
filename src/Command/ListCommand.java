@@ -3,7 +3,8 @@ import Receiver.Receiver;
 
 public class ListCommand implements Command {
 
-    Receiver receiver;
+    private Receiver receiver;
+
     public ListCommand(Receiver receiver) {
         this.receiver = receiver;
     }
@@ -12,13 +13,10 @@ public class ListCommand implements Command {
     public void execute() {
         System.out.println("List");
         receiver.list();
-
     }
-
 
     @Override
     public void undo(){}
-
 
     @Override
     public boolean checkUndo(){

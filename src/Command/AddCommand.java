@@ -3,9 +3,9 @@ import CustomException.CustomException;
 import Receiver.Receiver;
 
 public class AddCommand implements Command{
-    Receiver receiver;
-    String[] paramsStr;
-    String firstName, lastName, email;
+    private Receiver receiver;
+    private String[] paramsStr;
+    private String email;
 
     //constructor
     public AddCommand(Receiver receiver, String params) {
@@ -37,7 +37,6 @@ public class AddCommand implements Command{
 
     @Override
     public void execute() {
-
         //capitalize first 2 elements for first name and lastname
         for(int j=0;j<2;j++){
             paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
@@ -46,7 +45,6 @@ public class AddCommand implements Command{
         receiver.add(-1,paramsStr);
         System.out.println("Add");
     }
-
 
     @Override
     public void undo() {

@@ -4,14 +4,14 @@ import Receiver.Receiver;
 
 public class UpdateCommand implements Command {
 
-    Receiver receiver;
-    String params;
-    String[] paramsStr;
-    String[] paramsToBeUpdated;
-    int index;
-    String firstName, lastName, email;
-    int length;
-    String[] updatedParams;
+    private Receiver receiver;
+    private String params;
+    private String[] paramsStr;
+    private String[] paramsToBeUpdated;
+    private int index;
+    private String firstName, lastName, email;
+    private int length;
+    private String[] updatedParams;
 
     //constructor
     public UpdateCommand(Receiver receiver, String params)  {
@@ -66,8 +66,6 @@ public class UpdateCommand implements Command {
                 break;
         }
 
-
-
     }
 
 
@@ -78,8 +76,6 @@ public class UpdateCommand implements Command {
         updatedParams = receiver.update(index,paramsToBeUpdated);
         System.out.println("Update");
     }
-
-
 
     @Override
     public void undo() {
