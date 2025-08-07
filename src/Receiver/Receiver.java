@@ -71,11 +71,13 @@ public class Receiver {
     }
 
     /**
-     *
-     * @param index
-     * @param params
-     * @return
-     * @throws CustomException
+     * Contains the logic for UpdateCommand and the undo action for Updatecommand
+     * This method takes an integer index of data and the Array of data to be updated, and returns a String Array of
+     * the previous version of the updated data
+     * @param index index of data to be updated
+     * @param params data to be updated
+     * @return previous version of the updated data
+     * @throws CustomException for invalid index
      */
     public String[] update(int index, String[] params) throws CustomException {
         if (index<0 | index>dataStore.size()){
@@ -103,6 +105,11 @@ public class Receiver {
         return updatedParams;
     }
     
+    /**
+     * Contains the logic for ListCommand
+     * This method does not take any input and prints the dataStore
+     * @throws CustomException if there is nothing to print (i.e. dataStore is empty)
+     */
     public void list () throws CustomException {
         if (dataStore.isEmpty()){
             throw new CustomException("DataStore is Empty!");
@@ -119,6 +126,10 @@ public class Receiver {
         }
     }
 
+    /**
+     * Checks if the dataStore.txt file exists, and create it if it does not exist/
+     * @return boolean true if the file exist or if the file is created successfully
+     */
     public static boolean checkIfFileExistElseCreate(){
         if (Files.notExists(dataStoreFilePath)) {
 //            System.out.println("File does not exist, new file being created...");
@@ -138,6 +149,9 @@ public class Receiver {
         }
     }
 
+    /**
+     * reads data from file and store it in dataStore variable.
+     */
     public static void readFileToDataStore(){
         if(checkIfFileExistElseCreate()){
             try {
@@ -151,6 +165,9 @@ public class Receiver {
         }
     }
 
+    /**
+     * writes dataStore to the file
+     */
     public static void writeUpdatedDataStoreToFile(){
         String tempString = "";
         try {
