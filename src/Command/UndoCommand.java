@@ -28,7 +28,7 @@ public class UndoCommand implements Command{
     @Override
     public void execute() throws CustomException {
         if (history.isEmpty()){
-            throw new CustomException("History is empty");
+            throw new CustomException("History is empty. Nothing to undo.");
         }
         Command lastCmd = history.pop();
         lastCmd.undo();
