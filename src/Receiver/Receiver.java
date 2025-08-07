@@ -168,7 +168,7 @@ public class Receiver {
     /**
      * writes dataStore to the file
      */
-    public void writeUpdatedDataStoreToFile(){
+    public void storeToFile(){
         String tempString = "";
         try {
             for (int i = 0; i < dataStore.size(); i++) {

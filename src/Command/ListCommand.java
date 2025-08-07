@@ -46,5 +46,4 @@ public class ListCommand implements Command {
         return true;
     }
 
-
 }

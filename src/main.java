@@ -52,7 +52,7 @@ public class main {
         invoker.setCommandsForExecution(cmdlist3);
         invoker.executeCommand(CommandStackHistory);
 
-        stafflist1.writeUpdatedDataStoreToFile();
+        stafflist1.storeToFile();
 
     }
 }
