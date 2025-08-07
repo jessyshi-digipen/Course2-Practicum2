@@ -13,11 +13,11 @@ import java.util.regex.Pattern;
  */
 public interface Command {
     /**
-     * execute command
+     * execute DeleteCommand
      */
     void execute() throws CustomException;
     /**
-     * undo command
+     * undo DeleteCommand
      */
     void undo() throws CustomException;
     /**

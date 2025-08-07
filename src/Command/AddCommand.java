@@ -5,8 +5,8 @@ import Receiver.Receiver;
 /**
  * A class that adds params to dataStore
  * accepts 2 parameters:
- * 1. Receiver
- * 2. Params: String <data1> <data2> <data3>
+ * 1. receiver : Receiver
+ * 2. params: String <data1> <data2> <data3>
  */
 public class AddCommand implements Command{
     private Receiver receiver;
@@ -15,9 +15,9 @@ public class AddCommand implements Command{
     private String email;
 
     /**
-     * Add constructor accepts accepts 2 parameters
-     * @param receiver
-     * @param params:String - <data1> <data2> <data3>
+     * constructor accepts accepts 2 parameters
+     * @param receiver the receiver
+     * @param params String - <data1> <data2> <data3>
      */
     public AddCommand(Receiver receiver, String params) {
         this.receiver = receiver;
@@ -68,7 +68,9 @@ public class AddCommand implements Command{
         return false;
     }
 
-
+    /**
+     * Checks if listCommand was executed before AddCommand
+     */
     @Override
     public boolean checkList(){
         return false;
