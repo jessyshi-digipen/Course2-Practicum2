@@ -13,21 +13,18 @@ public class DeleteCommand implements Command {
         //index to delete
         this.params = params;
         //parse to integer, otherwise throw custom exception
-        try{
-            index = Integer.parseInt(params);
-        } catch (NumberFormatException e) {
-            CustomException ce = new CustomException("Please enter a valid index for deleteCommand");
-            System.out.println(ce.getMessage());
-        }
-
     }
 
     @Override
-    public void execute() {
+    public void execute() throws CustomException {
+        try {
+            index = Integer.parseInt(params);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new CustomException("Please enter correct number of parameters for DeleteCommand");
+        }
         deletedElement = receiver.delete(index);
         System.out.println("Delete");
     }
-
 
     @Override
     public void undo() {
@@ -39,7 +36,5 @@ public class DeleteCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
-
-
 
 }

@@ -20,10 +20,6 @@ public class Invoker {
         for (Command cmd : cmdToExecute) {
             //Undo last undoable command if exist (update, add, delete)
             try{
-                //throw a CustomException if cmd is null
-                if (cmd == null) {
-                    throw new CustomException("Command cannot be null");
-                }
                 cmd.execute();
                 //Check for UndoCommand
                 if (cmd.checkUndo()) {

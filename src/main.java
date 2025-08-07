@@ -16,7 +16,6 @@ public class main {
     public static void main(String[] args) throws CustomException {
 
         Stack<Command> CommandStackHistory = new Stack<Command>();
-        
 
 //        Stack<Command> commandStack = new Stack<Command>();
         Receiver stafflist1 = new Receiver();
@@ -31,14 +30,15 @@ public class main {
         ListCommand cmd5 = new ListCommand(stafflist1);
         UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam Black");
         UpdateCommand cmd7 = new UpdateCommand(stafflist1, "1 blue bell ice-cream@alaskaFields.org");
+        UpdateCommand cmd10 = new UpdateCommand(stafflist1,"11 Adam Black");
         DeleteCommand cmd8 = new DeleteCommand(stafflist1,"1");
         UndoCommand cmd9 = new UndoCommand(stafflist1);
 
         //double digit index
-//        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
+        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
         //multiple list
 //       Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
-         Command[] cmdlist = {cmd1, cmd2, cmd5};
+//         Command[] cmdlist = {cmd10};
 
 //        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name");
 //        Command[] cmdlist = {cmd1};
