@@ -9,13 +9,35 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Receiver class contains the logic of the concrete commands.
+ */
 public class Receiver {
 
+    /**
+     * static variable to store the data: first name, last name, email
+     */
     private static ArrayList<String[]> dataStore = new ArrayList<String[]>();
+    /**
+     * variable for index of the data to be updated by commands
+     */
     private String index;
+    /**
+     * variable for a row of data from dataStore
+     */
     private String[] Stringlist;
+    /**
+     * variable for path to read from and write to (dataStore.txt)
+     */
     private static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
+    /**
+     * Contains the logic for AddCommand and the undo action for an AddCommand.
+     * This method takes the index and String array of data to be added to dataStore.
+     * @param index index of data to be added. This takes value of -1 for undo of a DeleteCommand.
+     * @param params data to be added in.
+     */
     public void add(int index, String[] params){
         //params contain 3 values (payload 1) <data1> <data2> <data3>
         if (index==-1){
@@ -26,6 +48,14 @@ public class Receiver {
         }
     }
 
+    /**
+     * Contains the logic for DeleteCommand and the undo action for a DeleteCommand.
+     * This method takes an integer index of data to be deleted from the dataStore, and returns the deleted array of
+     * string.
+     * @param index index of data to be deleted. This takes value of -1 for undo of an AddCommand.
+     * @return the deleted array of strings
+     * @throws CustomException when dataStore is empty/ there is nothing to delete.
+     */
     public String[] delete(int index) throws CustomException{
         if (dataStore.isEmpty()){
             throw new CustomException("There is nothing to delete!");
@@ -40,6 +70,15 @@ public class Receiver {
         }
     }
 
+    /**
+     * Contains the logic for UpdateCommand and the undo action for Updatecommand
+     * This method takes an integer index of data and the Array of data to be updated, and returns a String Array of
+     * the previous version of the updated data
+     * @param index index of data to be updated
+     * @param params data to be updated
+     * @return previous version of the updated data
+     * @throws CustomException for invalid index
+     */
     public String[] update(int index, String[] params) throws CustomException {
         if (index<0 | index>dataStore.size()){
             throw new CustomException("index to update not found");
@@ -66,6 +105,11 @@ public class Receiver {
         return updatedParams;
     }
     
+    /**
+     * Contains the logic for ListCommand
+     * This method does not take any input and prints the dataStore
+     * @throws CustomException if there is nothing to print (i.e. dataStore is empty)
+     */
     public void list () throws CustomException {
         if (dataStore.isEmpty()){
             throw new CustomException("DataStore is Empty!");
@@ -82,6 +126,10 @@ public class Receiver {
         }
     }
 
+    /**
+     * Checks if the dataStore.txt file exists, and create it if it does not exist/
+     * @return boolean true if the file exist or if the file is created successfully
+     */
     public static boolean checkIfFileExistElseCreate(){
         if (Files.notExists(dataStoreFilePath)) {
 //            System.out.println("File does not exist, new file being created...");
@@ -101,6 +149,9 @@ public class Receiver {
         }
     }
 
+    /**
+     * reads data from file and store it in dataStore variable.
+     */
     public static void readFileToDataStore(){
         if(checkIfFileExistElseCreate()){
             try {
@@ -114,6 +165,9 @@ public class Receiver {
         }
     }
 
+    /**
+     * writes dataStore to the file
+     */
     public static void writeUpdatedDataStoreToFile(){
         String tempString = "";
         try {

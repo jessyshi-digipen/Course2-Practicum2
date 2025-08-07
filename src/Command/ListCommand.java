@@ -41,6 +41,10 @@ public class ListCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
+    @Override
+    public boolean checkList(){
+        return true;
+    }
 
     /**
      * Checks if a ListCommand was executed before this ListCommand
