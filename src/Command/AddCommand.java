@@ -68,6 +68,7 @@ public class AddCommand implements Command{
         return false;
     }
 
+
     @Override
     public boolean checkList(){
         return false;
