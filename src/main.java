@@ -14,10 +14,49 @@ import java.util.Stack;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class main {
     public static void main(String[] args) throws CustomException {
+        Stack<Command> CommandStackHistory = new Stack<Command>();
+        Receiver receiver = new Receiver();
+        Invoker invoker = new Invoker();
 
+        cmdlist1(receiver,invoker);
+        cmdlist2(receiver,invoker);
+
+//        receiver.storeToFile();
+
+    }
+
+    //just 2 adds
+    public static void cmdlist1(Receiver receiver, Invoker invoker){
         Stack<Command> CommandStackHistory = new Stack<Command>();
 
-//        Stack<Command> commandStack = new Stack<Command>();
+        receiver.readFileToDataStore();
+
+        Command[] cmdlist = {
+                new AddCommand(receiver,"first_name Last_name Email"),
+                new AddCommand(receiver,"fohn foe simple@example.com"),
+                new ListCommand(receiver),
+        };
+
+        invoker.setCommandsForExecution(cmdlist);
+        invoker.executeCommand(CommandStackHistory);
+    }
+
+    public static void cmdlist2(Receiver receiver, Invoker invoker){
+        Stack<Command> CommandStackHistory = new Stack<Command>();
+
+        receiver.readFileToDataStore();
+
+        Command[] cmdlist = {
+                new AddCommand(receiver,"Hanna Moon tetter.tots@potatoesarelife.com"),
+                new ListCommand(receiver)
+        };
+
+        invoker.setCommandsForExecution(cmdlist);
+        invoker.executeCommand(CommandStackHistory);
+    }
+
+    public void addOthersContent(){
+        Stack<Command> CommandStackHistory = new Stack<Command>();
         Receiver stafflist1 = new Receiver();
         //initialise file and store file contents to DataStore
         stafflist1.readFileToDataStore();
@@ -37,7 +76,7 @@ public class main {
         Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
         //multiple list
 //       Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
-         Command[] cmdlist3 = {cmd1, cmd2, cmd3, cmd9, cmd5, cmd9, cmd5};
+        Command[] cmdlist3 = {cmd1, cmd2, cmd3, cmd9, cmd5, cmd9, cmd5};
 
 //        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name");
 //        Command[] cmdlist = {cmd1};
@@ -48,11 +87,7 @@ public class main {
         invoker.setCommandsForExecution(cmdlist);
         invoker.executeCommand(CommandStackHistory);
 
-        //test2
-        invoker.setCommandsForExecution(cmdlist3);
-        invoker.executeCommand(CommandStackHistory);
 
         stafflist1.storeToFile();
-
     }
 }
