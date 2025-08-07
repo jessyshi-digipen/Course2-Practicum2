@@ -45,13 +45,4 @@ public class ListCommand implements Command {
     public boolean checkList(){
         return true;
     }
-
-    /**
-     * Checks if a ListCommand was executed before this ListCommand
-     */
-    @Override
-    public boolean checkList(){
-        return true;
-    }
-
 }
