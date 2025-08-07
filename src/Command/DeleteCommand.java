@@ -3,10 +3,10 @@ import CustomException.CustomException;
 import Receiver.Receiver;
 
 /**
- * A class that deletes params to dataStore
- * accepts 2 parameters:
+ * A class that deletes contents to dataStore based on a given index.
+ * Accepts 2 parameters:
  * 1. receiver : Receiver
- * 2. params: String <data1> <data2> <data3>
+ * 2. params: index of the content to delete
  */
 public class DeleteCommand implements Command {
     private Receiver receiver;
@@ -15,9 +15,9 @@ public class DeleteCommand implements Command {
     private static String[] deletedElement;
 
     /**
-     * constructor accepts accepts 2 parameters
+     * constructor accepts 2 parameters
      * @param receiver the receiver
-     * @param params String - <data1> <data2> <data3>
+     * @param params String <data1>, an integer
      */
     public DeleteCommand(Receiver receiver, String params) {
         this.receiver = receiver;
@@ -50,7 +50,7 @@ public class DeleteCommand implements Command {
     }
 
     /**
-     * Checks if undoCommand was executed before DeleteCommand
+     * Checks if UndoCommand was executed before this DeleteCommand
      */
     @Override
     public boolean checkUndo(){
@@ -58,7 +58,7 @@ public class DeleteCommand implements Command {
     }
 
     /**
-     * Checks if listCommand was executed before DeleteCommand
+     * Checks if ListCommand was executed before this DeleteCommand
      */
     @Override
     public boolean checkList(){

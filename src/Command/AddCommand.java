@@ -3,10 +3,11 @@ import CustomException.CustomException;
 import Receiver.Receiver;
 
 /**
- * A class that adds params to dataStore
- * accepts 2 parameters:
+ * A class that adds contents to dataStore.
+ * Accepts 2 parameters:
  * 1. receiver : Receiver
- * 2. params: String <data1> <data2> <data3>
+ * 2. params: String <data1> <data2> <data3>, all 3 content fields are compulsory
+ * data 3 only accepts an email address or latin characters, number and underscores
  */
 public class AddCommand implements Command{
     private Receiver receiver;
@@ -15,9 +16,9 @@ public class AddCommand implements Command{
     private String email;
 
     /**
-     * constructor accepts accepts 2 parameters
+     * constructor accepts 2 parameters
      * @param receiver the receiver
-     * @param params String - <data1> <data2> <data3>
+     * @param params String <data1> <data2> <data3>, all 3 content fields are compulsory
      */
     public AddCommand(Receiver receiver, String params) {
         this.receiver = receiver;
@@ -61,7 +62,7 @@ public class AddCommand implements Command{
     }
 
     /**
-     * Checks if undoCommand was executed before AddCommand
+     * Checks if UndoCommand was executed before this AddCommand
      */
     @Override
     public boolean checkUndo(){
@@ -69,7 +70,7 @@ public class AddCommand implements Command{
     }
 
     /**
-     * Checks if listCommand was executed before AddCommand
+     * Checks if ListCommand was executed before this AddCommand
      */
     @Override
     public boolean checkList(){

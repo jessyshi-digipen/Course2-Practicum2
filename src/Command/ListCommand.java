@@ -3,7 +3,7 @@ import CustomException.CustomException;
 import Receiver.Receiver;
 
 /**
- * A class that prints dataStore
+ * A class that prints the contents in the dataStore
  * accepts 1 parameter:
  * 1. receiver : Receiver
  */
@@ -12,7 +12,7 @@ public class ListCommand implements Command {
     private Receiver receiver;
 
     /**
-     * constructor accepts accepts 1 parameter1
+     * constructor accepts 1 parameter1
      * @param receiver the receiver
      */
     public ListCommand(Receiver receiver) {
@@ -29,13 +29,13 @@ public class ListCommand implements Command {
     }
 
     /**
-     * ListCommand cannot undo
+     * cannot undo ListCommand
      */
     @Override
     public void undo(){}
 
     /**
-     * Checks if undoCommand was executed before ListCommand
+     * Checks if UndoCommand was executed before this ListCommand
      */
     @Override
     public boolean checkUndo(){

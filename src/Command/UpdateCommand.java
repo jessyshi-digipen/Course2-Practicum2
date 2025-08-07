@@ -2,6 +2,13 @@ package Command;
 import CustomException.CustomException;
 import Receiver.Receiver;
 
+/**
+ * A class that allows user to update the data store content based on a given index
+ * accepts 2 parameters:
+ * 1. receiver : Receiver
+ * 2. params: string <index of the content to update in datastore> <data1> <data2> <data3>
+ * for params, index and data1 are compulsory fields
+ */
 public class UpdateCommand implements Command {
 
     private Receiver receiver;
@@ -11,13 +18,20 @@ public class UpdateCommand implements Command {
     private int index;
     private String[] updatedParams;
 
-    //constructor
+    /**
+     * constructor accepts 2 parameter:
+     * @param receiver the receiver
+     * @param params: string <index of the content to update in datastore> <data1> <data2> <data3>, index and data1 are compulsory fields
+     */
     public UpdateCommand(Receiver receiver, String params)  {
         this.receiver = receiver;
         this.params = params;
 
     }
 
+    /**
+     * Executes UpdateCommand
+     */
     @Override
     public void execute() throws CustomException {
         paramsStr = params.split(" ");
@@ -73,16 +87,25 @@ public class UpdateCommand implements Command {
         System.out.println("Update");
     }
 
+    /**
+     * Executes undo UpdateCommand
+     */
     @Override
     public void undo() throws CustomException {
         receiver.update(index, updatedParams);
     }
 
+    /**
+     * Checks if UndoCommand was executed before this UpdateCommand
+     */
     @Override
     public boolean checkUndo(){
         return false;
     }
 
+    /**
+     * Checks if ListCommand was executed before this UpdateCommand
+     */
     @Override
     public boolean checkList(){
         return false;
