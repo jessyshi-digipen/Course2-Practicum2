@@ -40,12 +40,12 @@ public class UpdateCommand implements Command {
         //capitalize 3rd element if not a email
         if (paramsStr.length == 4){
             if (!paramsStr[3].contains("@")){
-                paramsStr[3].substring(0,1).toUpperCase();
+                paramsStr[3] = paramsStr[3].substring(0,1).toUpperCase() +  paramsStr[3].substring(1).toLowerCase();
             }
         }
         else {
             for(int j=1;j<paramsStr.length;j++){
-                paramsStr[j].substring(0,1).toUpperCase();
+                paramsStr[j] =  paramsStr[j].substring(0,1).toUpperCase() +  paramsStr[j].substring(1).toLowerCase();
             }
         }
 
