@@ -2,28 +2,49 @@ package Command;
 import CustomException.CustomException;
 import Receiver.Receiver;
 
+/**
+ * A class that prints dataStore
+ * accepts 1 parameter:
+ * 1. receiver : Receiver
+ */
 public class ListCommand implements Command {
 
     private Receiver receiver;
 
+    /**
+     * constructor accepts accepts 1 parameter1
+     * @param receiver the receiver
+     */
     public ListCommand(Receiver receiver) {
         this.receiver = receiver;
     }
 
+    /**
+     * Executes ListCommand
+     */
     @Override
     public void execute() throws CustomException {
         System.out.println("List");
         receiver.list();
     }
 
+    /**
+     * ListCommand cannot undo
+     */
     @Override
     public void undo(){}
 
+    /**
+     * Checks if undoCommand was executed before ListCommand
+     */
     @Override
     public boolean checkUndo(){
         return false;
     }
 
+    /**
+     * Checks if a ListCommand was executed before this ListCommand
+     */
     @Override
     public boolean checkList(){
         return true;
