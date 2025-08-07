@@ -28,7 +28,7 @@ public class AddCommand implements Command{
         //capitalize first 2 elements for first name and lastname
         //capitalize 3rd element if not a email
         if (paramsStr[2].contains("@")){
-            paramsStr[2].substring(0,1).toUpperCase();
+            paramsStr[2] = paramsStr[2].substring(0,1).toUpperCase() +  paramsStr[2].substring(1).toLowerCase();
         }
         else {
             for(int j=0;j<2;j++){
