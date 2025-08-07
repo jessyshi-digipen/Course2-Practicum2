@@ -41,5 +41,4 @@ public class DeleteCommand implements Command {
     public boolean checkList(){
         return false;
     }
-
 }

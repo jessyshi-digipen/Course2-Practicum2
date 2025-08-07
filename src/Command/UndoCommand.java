@@ -5,23 +5,24 @@ import Receiver.Receiver;
 import java.util.Stack;
 
 public class UndoCommand implements Command{
-
     Stack<Command> history;
+
     public UndoCommand(Receiver receiver, Stack<Command> history) {
         this.history = history;
     }
 
     @Override
     public void execute() throws CustomException {
-        if (!history.isEmpty()) {
-            Command lastCmd = history.pop();
-            lastCmd.undo();
+        if (history.isEmpty()){
+            throw new CustomException("History is empty");
         }
+        Command lastCmd = history.pop();
+        lastCmd.undo();
         System.out.println("Undo");
     }
 
     @Override
-    public void undo()  {}
+    public void undo() {}
 
     @Override
     public boolean checkUndo(){

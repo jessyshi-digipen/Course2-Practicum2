@@ -82,4 +82,9 @@ public class UpdateCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
+
+    @Override
+    public boolean checkList(){
+        return false;
+    }
 }

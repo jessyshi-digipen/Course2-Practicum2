@@ -21,12 +21,9 @@ public class Invoker {
             //Undo last undoable command if exist (update, add, delete)
             try{
                 cmd.execute();
-
-                //only push to history stack if cmd is not list
-                if (! cmd.checkList() | ! cmd.checkUndo()) {
+                if (!cmd.checkList() | !cmd.checkUndo()) {
                     history.push(cmd);
                 }
-
             }
             catch (CustomException e){
                 System.out.println(e.getMessage());
