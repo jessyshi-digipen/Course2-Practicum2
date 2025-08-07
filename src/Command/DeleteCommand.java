@@ -20,12 +20,12 @@ public class DeleteCommand implements Command {
         try {
             index = Integer.parseInt(params);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new CustomException("Please enter correct number of parameters for AddCommand");
+            throw new CustomException("Please enter correct number of parameters for DeleteCommand");
         }
         deletedElement = receiver.delete(index);
         System.out.println("Delete");
     }
-    
+
     @Override
     public void undo() {
         //use add to undo delete action
@@ -36,5 +36,5 @@ public class DeleteCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
-    
+
 }
