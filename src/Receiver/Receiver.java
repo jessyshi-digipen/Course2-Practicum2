@@ -18,7 +18,7 @@ public class Receiver {
     /**
      * static variable to store the data: first name, last name, email
      */
-    private ArrayList<String[]> dataStore = new ArrayList<String[]>();
+    private ArrayList<String[]> dataStore;
     /**
      * variable for index of the data to be updated by commands
      */
@@ -32,6 +32,11 @@ public class Receiver {
      */
     private final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
+
+    public Receiver(){
+        dataStore = new ArrayList<String[]>();
+        readFileToDataStore();
+    }
     /**
      * Contains the logic for AddCommand and the undo action for an AddCommand.
      * This method takes the index and String array of data to be added to dataStore.

@@ -13,46 +13,25 @@ import java.util.Stack;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class main {
-    public static void main(String[] args) throws CustomException {
-        Stack<Command> CommandStackHistory = new Stack<Command>();
-        Receiver receiver = new Receiver();
-        Invoker invoker = new Invoker();
-
-        cmdlist1(receiver,invoker);
-        cmdlist2(receiver,invoker);
-
-//        receiver.storeToFile();
+    public static void main(String[] args) {
+        testCase();
+        testCase();
 
     }
 
-    //just 2 adds
-    public static void cmdlist1(Receiver receiver, Invoker invoker){
+    public static void testCase(){
         Stack<Command> CommandStackHistory = new Stack<Command>();
-
-        receiver.readFileToDataStore();
-
+        Receiver receiver = new Receiver();
         Command[] cmdlist = {
-                new AddCommand(receiver,"first_name Last_name Email"),
+//                new AddCommand(receiver,"first_name Last_name Email"),
                 new AddCommand(receiver,"fohn foe simple@example.com"),
                 new ListCommand(receiver),
         };
 
+        Invoker invoker = new Invoker();
         invoker.setCommandsForExecution(cmdlist);
         invoker.executeCommand(CommandStackHistory);
-    }
 
-    public static void cmdlist2(Receiver receiver, Invoker invoker){
-        Stack<Command> CommandStackHistory = new Stack<Command>();
-
-        receiver.readFileToDataStore();
-
-        Command[] cmdlist = {
-                new AddCommand(receiver,"Hanna Moon tetter.tots@potatoesarelife.com"),
-                new ListCommand(receiver)
-        };
-
-        invoker.setCommandsForExecution(cmdlist);
-        invoker.executeCommand(CommandStackHistory);
     }
 
     public void addOthersContent(){

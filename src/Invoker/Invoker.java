@@ -12,15 +12,15 @@ public class Invoker {
     /**
      * variable to store the all the commands to be executed
      */
-    private Command[] cmdToExecute;
+    private static Command[] cmdToExecute;
 
 
     /**
      * stores the arrays of Commands into a local variable
      * @param cmdToExecute arrays of Commands
      */
-    public void setCommandsForExecution(Command[] cmdToExecute) {
-        this.cmdToExecute = cmdToExecute;
+    public void setCommandsForExecution(Command[] cmd) {
+        cmdToExecute = cmd;
 
     }
 
@@ -29,7 +29,7 @@ public class Invoker {
      * @param history stack of Command history
      */
     //execute all the command in the stored array
-    public void executeCommand(Stack<Command> history) {
+    public static void executeCommand(Stack<Command> history) {
 
         for (Command cmd : cmdToExecute) {
             //Undo last undoable command if exist (update, add, delete)
