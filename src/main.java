@@ -16,12 +16,11 @@ public class main {
     public static void main(String[] args) throws CustomException {
 
         Stack<Command> CommandStackHistory = new Stack<Command>();
-        
 
 //        Stack<Command> commandStack = new Stack<Command>();
         Receiver stafflist1 = new Receiver();
         //initialise file and store file contents to DataStore
-        Receiver.readFileToDataStore();
+        stafflist1.readFileToDataStore();
 
         //Initialize command objects and command array cmdlist
         AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name Email");
@@ -38,19 +37,22 @@ public class main {
         Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
         //multiple list
 //       Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
-//         Command[] cmdlist = {cmd1, cmd2, cmd3, cmd9, cmd5, cmd9, cmd5};
+         Command[] cmdlist3 = {cmd1, cmd2, cmd3, cmd9, cmd5, cmd9, cmd5};
 
 //        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name");
 //        Command[] cmdlist = {cmd1};
         //Initialize invoker object
         Invoker invoker = new Invoker();
+
+        //test1
         invoker.setCommandsForExecution(cmdlist);
-
         invoker.executeCommand(CommandStackHistory);
-        Receiver.writeUpdatedDataStoreToFile();
 
+        //test2
+        invoker.setCommandsForExecution(cmdlist3);
+        invoker.executeCommand(CommandStackHistory);
 
-
+        stafflist1.writeUpdatedDataStoreToFile();
 
     }
 }

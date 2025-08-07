@@ -18,7 +18,7 @@ public class Receiver {
     /**
      * static variable to store the data: first name, last name, email
      */
-    private static ArrayList<String[]> dataStore = new ArrayList<String[]>();
+    private ArrayList<String[]> dataStore = new ArrayList<String[]>();
     /**
      * variable for index of the data to be updated by commands
      */
@@ -30,7 +30,7 @@ public class Receiver {
     /**
      * variable for path to read from and write to (dataStore.txt)
      */
-    private static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
+    private final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
     /**
      * Contains the logic for AddCommand and the undo action for an AddCommand.
@@ -130,7 +130,7 @@ public class Receiver {
      * Checks if the dataStore.txt file exists, and create it if it does not exist/
      * @return boolean true if the file exist or if the file is created successfully
      */
-    public static boolean checkIfFileExistElseCreate(){
+    public boolean checkIfFileExistElseCreate(){
         if (Files.notExists(dataStoreFilePath)) {
 //            System.out.println("File does not exist, new file being created...");
             File newFile = new File(dataStoreFilePath.toString());
@@ -152,7 +152,7 @@ public class Receiver {
     /**
      * reads data from file and store it in dataStore variable.
      */
-    public static void readFileToDataStore(){
+    public void readFileToDataStore(){
         if(checkIfFileExistElseCreate()){
             try {
                 List<String> lines = Files.readAllLines(dataStoreFilePath);
@@ -168,7 +168,7 @@ public class Receiver {
     /**
      * writes dataStore to the file
      */
-    public static void writeUpdatedDataStoreToFile(){
+    public void writeUpdatedDataStoreToFile(){
         String tempString = "";
         try {
             for (int i = 0; i < dataStore.size(); i++) {
