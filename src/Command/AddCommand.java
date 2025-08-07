@@ -2,19 +2,31 @@ package Command;
 import CustomException.CustomException;
 import Receiver.Receiver;
 
-
+/**
+ * A class that adds params to dataStore
+ * accepts 2 parameters:
+ * 1. Receiver
+ * 2. Params: String <data1> <data2> <data3>
+ */
 public class AddCommand implements Command{
     private Receiver receiver;
     private String params;
     private String[] paramsStr;
     private String email;
 
-    //constructor
+    /**
+     * Add constructor accepts accepts 2 parameters
+     * @param receiver
+     * @param params:String - <data1> <data2> <data3>
+     */
     public AddCommand(Receiver receiver, String params) {
         this.receiver = receiver;
         this.params =  params;
     }
 
+    /**
+     * Executes AddCommand
+     */
     @Override
     public void execute() throws CustomException {
         //split the params string and ensure correct number of inputs, otherwise, throw exception
@@ -39,12 +51,18 @@ public class AddCommand implements Command{
         System.out.println("Add");
     }
 
+    /**
+     * Executes undo AddCommand
+     */
     @Override
     public void undo() throws CustomException{
         //use index-1 to indicate this is an undo addCommand
         receiver.delete(-1);
     }
 
+    /**
+     * Checks if undoCommand was executed before AddCommand
+     */
     @Override
     public boolean checkUndo(){
         return false;

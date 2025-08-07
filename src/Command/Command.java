@@ -12,9 +12,21 @@ import java.util.regex.Pattern;
  * 3. checkUndo()
  */
 public interface Command {
+    /**
+     * execute command
+     */
     void execute() throws CustomException;
+    /**
+     * undo command
+     */
     void undo() throws CustomException;
+    /**
+     * use this to check if lastest command is an undoCommand
+     */
     boolean checkUndo();
+    /**
+     * use this to check if lastest command is a listCommand
+     */
     boolean checkList();
 
 

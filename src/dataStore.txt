@@ -1,6 +1,2 @@
-Blue Bell ice-cream@alaskaFields.org
-Fohn Foe Simple@example.com
-Adam Black Tetter.tots@potatoesarelife.com
-Ah Boon Green-tea@teaforlife.com
 First_name Last_name Email
-Fohn Foe Simple@example.com
+First_name Last_name Email
