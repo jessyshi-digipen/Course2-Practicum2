@@ -51,8 +51,3 @@ public class AddCommand implements Command{
         return false;
     }
 }
-    @Override
-    public boolean checkUndo(){
-        return false;
-    }
-}
