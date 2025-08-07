@@ -2,14 +2,13 @@ package Receiver;
 
 import CustomException.CustomException;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Receiver {
 
     private static ArrayList<String[]> dataStore = new ArrayList<String[]>();
@@ -101,6 +100,7 @@ public class Receiver {
             return true;
         }
     }
+
     public static void readFileToDataStore(){
         if(checkIfFileExistElseCreate()){
             try {
@@ -126,5 +126,4 @@ public class Receiver {
             e.getMessage();
         }
     }
-    
 }
