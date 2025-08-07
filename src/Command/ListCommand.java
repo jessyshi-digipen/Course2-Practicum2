@@ -23,5 +23,9 @@ public class ListCommand implements Command {
     public boolean checkUndo(){
         return false;
     }
+    @Override
+    public boolean checkList(){
+        return true;
+    }
 
 }

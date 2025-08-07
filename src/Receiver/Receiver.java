@@ -9,13 +9,35 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Receiver class contains the logic of the concrete commands.
+ */
 public class Receiver {
 
+    /**
+     * static variable to store the data: first name, last name, email
+     */
     private static ArrayList<String[]> dataStore = new ArrayList<String[]>();
+    /**
+     * variable for index of the data to be updated by commands
+     */
     private String index;
+    /**
+     * variable for a row of data from dataStore
+     */
     private String[] Stringlist;
+    /**
+     * variable for path to read from and write to (dataStore.txt)
+     */
     private static final Path dataStoreFilePath = Paths.get("./src/dataStore.txt");
 
+    /**
+     * Contains the logic for AddCommand and the undo action for an AddCommand.
+     * This method takes the index and String array of data to be added to dataStore.
+     * @param index index of data to be added. This takes value of -1 for undo of a DeleteCommand.
+     * @param params data to be added in.
+     */
     public void add(int index, String[] params){
         //params contain 3 values (payload 1) <data1> <data2> <data3>
         if (index==-1){
@@ -26,6 +48,14 @@ public class Receiver {
         }
     }
 
+    /**
+     * Contains the logic for DeleteCommand and the undo action for a DeleteCommand.
+     * This method takes an integer index of data to be deleted from the dataStore, and returns the deleted array of
+     * string.
+     * @param index index of data to be deleted. This takes value of -1 for undo of an AddCommand.
+     * @return the deleted array of strings
+     * @throws CustomException when dataStore is empty/ there is nothing to delete.
+     */
     public String[] delete(int index) throws CustomException{
         if (dataStore.isEmpty()){
             throw new CustomException("There is nothing to delete!");
@@ -40,6 +70,13 @@ public class Receiver {
         }
     }
 
+    /**
+     *
+     * @param index
+     * @param params
+     * @return
+     * @throws CustomException
+     */
     public String[] update(int index, String[] params) throws CustomException {
         if (index<0 | index>dataStore.size()){
             throw new CustomException("index to update not found");
