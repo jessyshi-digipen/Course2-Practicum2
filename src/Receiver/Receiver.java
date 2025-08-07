@@ -114,9 +114,12 @@ public class Receiver {
         }
     }
 
-    public static void writeUpdatedDataStoreToFile(){
+    public static void writeUpdatedDataStoreToFile() throws CustomException{
         String tempString = "";
         for (int i = 0; i < dataStore.size(); i++) {
+            if (dataStore.get(i).length !=3){
+                throw  new CustomException("File corrupted, check your datastore file");
+            }
             String line = dataStore.get(i)[0] + " " + dataStore.get(i)[1] + " "  + dataStore.get(i)[2] + "\n";
             tempString += line;
         }
