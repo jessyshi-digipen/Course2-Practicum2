@@ -37,4 +37,8 @@ public class DeleteCommand implements Command {
         return false;
     }
 
+    @Override
+    public boolean checkList(){
+        return false;
+    }
 }

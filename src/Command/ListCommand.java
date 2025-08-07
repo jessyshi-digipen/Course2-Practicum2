@@ -24,4 +24,9 @@ public class ListCommand implements Command {
         return false;
     }
 
+    @Override
+    public boolean checkList(){
+        return true;
+    }
+
 }

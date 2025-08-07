@@ -32,7 +32,7 @@ public class main {
         UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam Black");
         UpdateCommand cmd7 = new UpdateCommand(stafflist1, "1 blue bell ice-cream@alaskaFields.org");
         DeleteCommand cmd8 = new DeleteCommand(stafflist1,"1");
-        UndoCommand cmd9 = new UndoCommand(stafflist1);
+        UndoCommand cmd9 = new UndoCommand(stafflist1, CommandStackHistory);
 
         //double digit index
 //        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};

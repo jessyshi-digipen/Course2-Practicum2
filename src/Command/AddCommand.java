@@ -2,6 +2,7 @@ package Command;
 import CustomException.CustomException;
 import Receiver.Receiver;
 
+
 public class AddCommand implements Command{
     private Receiver receiver;
     private String params;
@@ -27,13 +28,11 @@ public class AddCommand implements Command{
         }
         //capitalize first 2 elements for first name and lastname
         //capitalize 3rd element if not a email
+        for(int j=0;j<2;j++){
+            paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
+        }
         if (paramsStr[2].contains("@")){
             paramsStr[2] = paramsStr[2].substring(0,1).toUpperCase() +  paramsStr[2].substring(1).toLowerCase();
-        }
-        else {
-            for(int j=0;j<2;j++){
-                paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
-            }
         }
 
         receiver.add(-1,paramsStr);
@@ -48,6 +47,11 @@ public class AddCommand implements Command{
 
     @Override
     public boolean checkUndo(){
+        return false;
+    }
+
+    @Override
+    public boolean checkList(){
         return false;
     }
 }

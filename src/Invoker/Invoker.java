@@ -21,20 +21,8 @@ public class Invoker {
             //Undo last undoable command if exist (update, add, delete)
             try{
                 cmd.execute();
-                //Check for UndoCommand
-                if (cmd.checkUndo()) {
-
-                    //undo the last command
-                    if (!history.isEmpty()) {
-                        Command lastCmd = history.pop();
-                        lastCmd.undo();
-                    }
-                }
-                else{
-                    //execute commands (other than undo)
-                    if (cmd.getClass() != ListCommand.class) {
-                        history.push(cmd);
-                    }
+                if (!cmd.checkList()){
+                    history.push(cmd);
                 }
             }
             catch (CustomException e){

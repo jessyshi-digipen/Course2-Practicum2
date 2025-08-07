@@ -5,10 +5,17 @@ import CustomException.CustomException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * An interface that has 3 methods to inherit:
+ * 1. execute()
+ * 2. undo()
+ * 3. checkUndo()
+ */
 public interface Command {
     void execute() throws CustomException;
     void undo() throws CustomException;
     boolean checkUndo();
+    boolean checkList();
 
 
     public default boolean checkEmail(String email){

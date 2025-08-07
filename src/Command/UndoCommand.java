@@ -1,12 +1,23 @@
 package Command;
+import CustomException.CustomException;
 import Receiver.Receiver;
 
-public class UndoCommand implements Command{
+import java.util.Stack;
 
-    public UndoCommand(Receiver receiver) {    }
+public class UndoCommand implements Command{
+    Stack<Command> history;
+
+    public UndoCommand(Receiver receiver, Stack<Command> history) {
+        this.history = history;
+    }
 
     @Override
-    public void execute() {
+    public void execute() throws CustomException {
+        if (history.isEmpty()){
+            throw new CustomException("History is empty");
+        }
+        Command lastCmd = history.pop();
+        lastCmd.undo();
         System.out.println("Undo");
     }
 
@@ -16,5 +27,10 @@ public class UndoCommand implements Command{
     @Override
     public boolean checkUndo(){
         return true;
+    }
+
+    @Override
+    public boolean checkList(){
+        return false;
     }
 }
