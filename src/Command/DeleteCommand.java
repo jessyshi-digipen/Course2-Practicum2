@@ -25,10 +25,7 @@ public class DeleteCommand implements Command {
      */
     public DeleteCommand(Receiver receiver, String params) {
         this.receiver = receiver;
-        //index to delete
         this.params = params;
-        //parse to integer, otherwise throw custom exception
-
     }
 
     /**
