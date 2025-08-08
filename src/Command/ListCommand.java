@@ -1,3 +1,7 @@
+/**
+ * This package contains concrete classes for handling various operations.
+ * Includes classes to add, delete, list, undo, update contents
+ */
 package Command;
 import CustomException.CustomException;
 import Receiver.Receiver;
