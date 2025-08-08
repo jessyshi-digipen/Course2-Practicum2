@@ -1,3 +1,6 @@
+/**
+ * This package contains an invoker class that takes in a list of commands and execute the commands.
+ */
 package Invoker;
 
 import Command.Command;
@@ -17,7 +20,7 @@ public class Invoker {
 
     /**
      * stores the arrays of Commands into a local variable
-     * @param cmdToExecute arrays of Commands
+     * @param cmd arrays of Commands
      */
     public void setCommandsForExecution(Command[] cmd) {
         cmdToExecute = cmd;
