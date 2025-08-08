@@ -42,9 +42,7 @@ public class AddCommand implements Command{
         if (receiver == null){
             throw new CustomException("Please enter input receiver object! Do not leave this blank");
         }
-
         //split the params string and ensure correct number of inputs, otherwise, throw exception
-
         this.paramsStr = this.params.split(" ");
         for (int i = 0; i < this.paramsStr.length; i++) {
             if (this.paramsStr[i].replace(" ", "").equals("")) {
@@ -58,15 +56,13 @@ public class AddCommand implements Command{
         if (!checkEmail(paramsStr[2])){
             throw new CustomException("Invalid email. Please enter valid email address");
         }
-        //capitalize first 2 elements for first name and lastname
-        //capitalize 3rd element if not a email
+        //capitalize first 2 elements for first name and lastname, and 3rd element if not a email 
         for(int j=0;j<2;j++){
             paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
         }
         if (!paramsStr[2].contains("@")){
             paramsStr[2] = paramsStr[2].substring(0,1).toUpperCase() +  paramsStr[2].substring(1).toLowerCase();
         }
-
         receiver.add(-1,paramsStr);
         System.out.println("Add");
     }
