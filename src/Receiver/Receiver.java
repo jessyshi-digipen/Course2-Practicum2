@@ -73,7 +73,7 @@ public class Receiver {
         }
         else if (index==-1){
             //undo add action
-            return dataStore.removeLast();
+            return dataStore.remove(dataStore.size()-1);
         }
         else{
             //delete at index-1(as index input starts from 1)
