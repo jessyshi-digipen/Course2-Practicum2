@@ -64,7 +64,7 @@ public class Receiver {
      * @throws CustomException when dataStore is empty/ there is nothing to delete.
      */
     public String[] delete(int index) throws CustomException{
-        if (index > dataStore.size()+1) {
+        if (index > dataStore.size()) {
             throw new CustomException("There is nothing to delete!");
         }
 
@@ -91,7 +91,7 @@ public class Receiver {
      * @throws CustomException for invalid index
      */
     public String[] update(int index, String[] params) throws CustomException {
-        if (index<0 | index>dataStore.size()+1){
+        if (index<0 | index>dataStore.size()){
             throw new CustomException("index to update not found");
         }
         String[] updatedParams = dataStore.get(index-1);

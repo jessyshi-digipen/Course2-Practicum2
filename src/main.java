@@ -24,9 +24,8 @@ public class main {
         Stack<Command> CommandStackHistory = new Stack<Command>();
         Receiver receiver = new Receiver();
         Command[] cmdlist = {
-                new AddCommand(receiver,"first_name Last_name Email"),
-                new AddCommand(receiver,"first_name Last_name Email"),
-                new DeleteCommand (receiver, "6"),
+                new UpdateCommand(receiver, "1 1 1"),
+                new DeleteCommand(receiver,"2"),
                 new ListCommand(receiver)
         };
 
