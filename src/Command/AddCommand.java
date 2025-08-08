@@ -59,7 +59,7 @@ public class AddCommand implements Command{
         for(int j=0;j<2;j++){
             paramsStr[j]= paramsStr[j].substring(0,1).toUpperCase() + paramsStr[j].substring(1).toLowerCase();
         }
-        if (paramsStr[2].contains("@")){
+        if (!paramsStr[2].contains("@")){
             paramsStr[2] = paramsStr[2].substring(0,1).toUpperCase() +  paramsStr[2].substring(1).toLowerCase();
         }
 
