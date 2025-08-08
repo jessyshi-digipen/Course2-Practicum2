@@ -21,8 +21,6 @@ public class ListCommand implements Command {
      */
     public ListCommand(Receiver receiver) {
         this.receiver = receiver;
-
-
     }
 
     /**
