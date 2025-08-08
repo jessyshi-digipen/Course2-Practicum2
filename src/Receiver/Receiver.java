@@ -49,7 +49,6 @@ public class Receiver {
      * @param params data to be added in.
      */
     public void add(int index, String[] params){
-        //params contain 3 values (payload 1) <data1> <data2> <data3>
         if (index==-1){
             dataStore.add(params);
         }
@@ -146,12 +145,10 @@ public class Receiver {
      */
     public boolean checkIfFileExistElseCreate(){
         if (Files.notExists(dataStoreFilePath)) {
-//            System.out.println("File does not exist, new file being created...");
             File newFile = new File(dataStoreFilePath.toString());
 
             try {
                 newFile.createNewFile();
-//             System.out.println("file successfully created? " + newFile.exists() );
             } catch (IOException e){
                 System.out.println(e.getMessage());
                 return false;
