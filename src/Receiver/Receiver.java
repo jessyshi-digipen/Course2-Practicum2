@@ -1,3 +1,6 @@
+/**
+ * This package contains a receiver class that has various functions and handles data read/write to file
+ */
 package Receiver;
 
 import CustomException.CustomException;
