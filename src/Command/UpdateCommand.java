@@ -30,8 +30,6 @@ public class UpdateCommand implements Command {
     public UpdateCommand(Receiver receiver, String params){
         this.receiver = receiver;
         this.params = params;
-
-
     }
 
     /**
@@ -40,7 +38,6 @@ public class UpdateCommand implements Command {
     @Override
     public void execute() throws CustomException {
         paramsStr = params.split(" ");
-        //catch if parseInt does not work
 
         if (params == null){
             throw new CustomException("Please enter parameters to be updated! Do not leave this blank");
@@ -65,13 +62,8 @@ public class UpdateCommand implements Command {
         if (paramsStr.length < 2 | paramsStr.length > 4){
             throw new CustomException("Please enter correct number of parameters for UpdateCommand");
         }
-
-        // params may contain up to 3 values (payload 2) <index> <data1> <data2> <data3>
-        // requirement states that input can only have data3 if data1 and data2 also exist, so check via the string
-        // length
-
-        //capitalize first 2 elements for first name and lastname
-        //capitalize 3rd element if not a email
+        
+        //capitalize first 2 elements for first name and lastname, and 3rd element if not email
         if (paramsStr.length == 4){
             if (!paramsStr[3].contains("@")){
                 paramsStr[3] = paramsStr[3].substring(0,1).toUpperCase() +  paramsStr[3].substring(1).toLowerCase();
