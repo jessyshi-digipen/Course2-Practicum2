@@ -31,7 +31,6 @@ public class Invoker {
      * executes all the commands in the stored array
      * @param history stack of Command history
      */
-
     public static void executeCommand(Stack<Command> history) {
 
         for (Command cmd : cmdToExecute) {
