@@ -4,70 +4,35 @@ import Command.DeleteCommand;
 import Command.UndoCommand;
 import Command.UpdateCommand;
 import Command.ListCommand;
-import CustomException.CustomException;
 import Invoker.Invoker;
 import Receiver.Receiver;
 
 import java.util.Stack;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class main {
     public static void main(String[] args) {
 
-        testCase();
-
-
-    }
-
-    public static void testCase() {
         Stack<Command> CommandStackHistory = new Stack<Command>();
         Receiver receiver = new Receiver();
-        Command[] cmdlist = {
-                new UpdateCommand(receiver, "1 1 1"),
-                new DeleteCommand(receiver,"2"),
-                new ListCommand(receiver)
-        };
-
-        Invoker invoker = new Invoker();
-        invoker.setCommandsForExecution(cmdlist);
-        invoker.executeCommand(CommandStackHistory);
-
-    }
-
-    public void addOthersContent(){
-        Stack<Command> CommandStackHistory = new Stack<Command>();
-        Receiver stafflist1 = new Receiver();
-        //initialise file and store file contents to DataStore
-//        stafflist1.readFileToDataStore();
 
         //Initialize command objects and command array cmdlist
-        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name Email");
-        AddCommand cmd2 = new AddCommand(stafflist1, "fohn foe simple@example.com");
-        AddCommand cmd3 = new AddCommand(stafflist1, "Hanna Moon tetter.tots@potatoesarelife.com");
-        AddCommand cmd4 = new AddCommand(stafflist1, "Ah Boon green-tea@teaforlife.com");
-        ListCommand cmd5 = new ListCommand(stafflist1);
-        UpdateCommand cmd6 = new UpdateCommand(stafflist1,"3 Adam Black");
-        UpdateCommand cmd7 = new UpdateCommand(stafflist1, "1 blue bell ice-cream@alaskaFields.org");
-        DeleteCommand cmd8 = new DeleteCommand(stafflist1,"1");
-        UndoCommand cmd9 = new UndoCommand(stafflist1, CommandStackHistory);
+        AddCommand cmd1 = new AddCommand(receiver,"First_name Last_name Email");
+        AddCommand cmd2 = new AddCommand(receiver, "John Doe simple@example.com");
+        AddCommand cmd3 = new AddCommand(receiver, "Hanna Moon tetter.tots@potatoesarelife.com");
+        AddCommand cmd4 = new AddCommand(receiver, "Ah Boon green-tea@teaforlife.com");
+        ListCommand cmd5 = new ListCommand(receiver);
+        UpdateCommand cmd6 = new UpdateCommand(receiver,"3 Adam");
+        UpdateCommand cmd7 = new UpdateCommand(receiver, "1 blue bell ice-cream@alaskaFields.org");
+        DeleteCommand cmd8 = new DeleteCommand(receiver,"1");
+        UndoCommand cmd9 = new UndoCommand(receiver, CommandStackHistory);
 
-        //double digit index
-        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd1,cmd2,cmd3,cmd4,cmd5};
-        //multiple list
-//       Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4, cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd5,cmd5, cmd9, cmd5};
-        Command[] cmdlist3 = {cmd1, cmd2, cmd3, cmd9, cmd5, cmd9, cmd5};
+        Command[] cmdlist = {cmd1,cmd2,cmd3,cmd4,cmd5, cmd6, cmd5, cmd7, cmd5, cmd8, cmd5, cmd9, cmd5};
 
-//        AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name");
-//        Command[] cmdlist = {cmd1};
-        //Initialize invoker object
         Invoker invoker = new Invoker();
-
-        //test1
         invoker.setCommandsForExecution(cmdlist);
         invoker.executeCommand(CommandStackHistory);
 
-
-        stafflist1.storeToFile();
     }
+
 }
