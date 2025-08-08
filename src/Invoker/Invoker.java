@@ -31,6 +31,7 @@ public class Invoker {
     //execute all the command in the stored array
     public static void executeCommand(Stack<Command> history) {
 
+
         for (Command cmd : cmdToExecute) {
             //Undo last undoable command if exist (update, add, delete)
             try{

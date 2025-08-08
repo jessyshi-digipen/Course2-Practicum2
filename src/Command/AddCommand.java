@@ -30,8 +30,23 @@ public class AddCommand implements Command{
      */
     @Override
     public void execute() throws CustomException {
+
+        if (params == null){
+            throw new CustomException("Please enter the data to be added! Do not leave this blank");
+        }
+
+        if (receiver == null){
+            throw new CustomException("Please enter input receiver object! Do not leave this blank");
+        }
+
         //split the params string and ensure correct number of inputs, otherwise, throw exception
+
         this.paramsStr = this.params.split(" ");
+        for (int i = 0; i < this.paramsStr.length; i++) {
+            if (this.paramsStr[i].replace(" ", "").equals("")) {
+                throw new CustomException("Data" + (i + 1) + " field cannot be blank");
+            }
+        }
         if(paramsStr.length != 3) {
             throw new CustomException("Please enter correct number of parameters for AddCommand");
         }

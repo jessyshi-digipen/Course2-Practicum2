@@ -12,6 +12,7 @@ import java.util.Stack;
  */
 public class UndoCommand implements Command{
     Stack<Command> history;
+    Receiver receiver;
 
     /**
      * constructor accepts 2 parameters
@@ -19,7 +20,9 @@ public class UndoCommand implements Command{
      * @param history Stack <Command> command history
      */
     public UndoCommand(Receiver receiver, Stack<Command> history) {
+
         this.history = history;
+        this.receiver = receiver;
     }
 
     /**
@@ -27,6 +30,15 @@ public class UndoCommand implements Command{
      */
     @Override
     public void execute() throws CustomException {
+
+        if (history == null){
+            throw new CustomException("Please enter the history stack! Do not leave this blank");
+        }
+
+        if (receiver == null){
+            throw new CustomException("Please enter input receiver object! Do not leave this blank");
+        }
+
         if (history.isEmpty()){
             throw new CustomException("History is empty. Nothing to undo.");
         }

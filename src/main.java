@@ -14,18 +14,20 @@ import java.util.Stack;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class main {
     public static void main(String[] args) {
+
         testCase();
-        testCase();
+
 
     }
 
-    public static void testCase(){
+    public static void testCase() {
         Stack<Command> CommandStackHistory = new Stack<Command>();
         Receiver receiver = new Receiver();
         Command[] cmdlist = {
-//                new AddCommand(receiver,"first_name Last_name Email"),
-                new AddCommand(receiver,"fohn foe simple@example.com"),
-                new ListCommand(receiver),
+                new AddCommand(receiver,"first_name Last_name Email"),
+                new AddCommand(receiver,"first_name Last_name Email"),
+                new DeleteCommand (receiver, "6"),
+                new ListCommand(receiver)
         };
 
         Invoker invoker = new Invoker();
@@ -38,7 +40,7 @@ public class main {
         Stack<Command> CommandStackHistory = new Stack<Command>();
         Receiver stafflist1 = new Receiver();
         //initialise file and store file contents to DataStore
-        stafflist1.readFileToDataStore();
+//        stafflist1.readFileToDataStore();
 
         //Initialize command objects and command array cmdlist
         AddCommand cmd1 = new AddCommand(stafflist1,"first_name Last_name Email");

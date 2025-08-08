@@ -35,7 +35,9 @@ public class Receiver {
 
     public Receiver(){
         dataStore = new ArrayList<String[]>();
+
         readFileToDataStore();
+
     }
     /**
      * Contains the logic for AddCommand and the undo action for an AddCommand.
@@ -62,6 +64,10 @@ public class Receiver {
      * @throws CustomException when dataStore is empty/ there is nothing to delete.
      */
     public String[] delete(int index) throws CustomException{
+        if (index > dataStore.size()+1) {
+            throw new CustomException("There is nothing to delete!");
+        }
+
         if (dataStore.isEmpty()){
             throw new CustomException("There is nothing to delete!");
         }
@@ -85,7 +91,7 @@ public class Receiver {
      * @throws CustomException for invalid index
      */
     public String[] update(int index, String[] params) throws CustomException {
-        if (index<0 | index>dataStore.size()){
+        if (index<0 | index>dataStore.size()+1){
             throw new CustomException("index to update not found");
         }
         String[] updatedParams = dataStore.get(index-1);
@@ -144,7 +150,7 @@ public class Receiver {
                 newFile.createNewFile();
 //             System.out.println("file successfully created? " + newFile.exists() );
             } catch (IOException e){
-                e.getMessage();
+                System.out.println(e.getMessage());
                 return false;
             }
             return true;
@@ -157,15 +163,18 @@ public class Receiver {
     /**
      * reads data from file and store it in dataStore variable.
      */
-    public void readFileToDataStore(){
-        if(checkIfFileExistElseCreate()){
+    public void readFileToDataStore() {
+        if (checkIfFileExistElseCreate()) {
             try {
                 List<String> lines = Files.readAllLines(dataStoreFilePath);
-                for  (String line: lines) {
+                for (String line : lines) {
+                    if (line == null || line.isBlank()) {
+                        continue;
+                    }
                     dataStore.add(line.split(" "));
                 }
-            }catch (IOException e){
-                System.out.print(e.getMessage());
+            } catch (IOException | ArrayIndexOutOfBoundsException e) {
+                System.out.print("Error writing to file");
             }
         }
     }

@@ -23,9 +23,10 @@ public class UpdateCommand implements Command {
      * @param receiver the receiver
      * @param params: string <index of the content to update in datastore> <data1> <data2> <data3>, index and data1 are compulsory fields
      */
-    public UpdateCommand(Receiver receiver, String params)  {
+    public UpdateCommand(Receiver receiver, String params){
         this.receiver = receiver;
         this.params = params;
+
 
     }
 
@@ -36,6 +37,21 @@ public class UpdateCommand implements Command {
     public void execute() throws CustomException {
         paramsStr = params.split(" ");
         //catch if parseInt does not work
+
+        if (params == null){
+            throw new CustomException("Please enter parameters to be updated! Do not leave this blank");
+        }
+
+        if (receiver == null){
+            throw new CustomException("Please enter input receiver object! Do not leave this blank");
+        }
+
+        for (int i = 0; i < this.paramsStr.length; i++) {
+            if (this.paramsStr[i].replace(" ", "").equals("")) {
+                throw new CustomException("Data" + (i + 1) + " field cannot be blank");
+            }
+        }
+
         try {
             index = Integer.parseInt(paramsStr[0]);
         } catch (NumberFormatException e) {

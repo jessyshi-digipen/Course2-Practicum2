@@ -17,6 +17,8 @@ public class ListCommand implements Command {
      */
     public ListCommand(Receiver receiver) {
         this.receiver = receiver;
+
+
     }
 
     /**
@@ -24,6 +26,10 @@ public class ListCommand implements Command {
      */
     @Override
     public void execute() throws CustomException {
+        if (receiver == null){
+            throw new CustomException("Please enter receiver object! Do not leave this blank");
+        }
+
         System.out.println("List");
         receiver.list();
     }

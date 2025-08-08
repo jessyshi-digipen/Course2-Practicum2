@@ -24,6 +24,7 @@ public class DeleteCommand implements Command {
         //index to delete
         this.params = params;
         //parse to integer, otherwise throw custom exception
+
     }
 
     /**
@@ -31,11 +32,24 @@ public class DeleteCommand implements Command {
      */
     @Override
     public void execute() throws CustomException {
+        if (params == null){
+            throw new CustomException("Please enter the index of data to be deleted! Do not leave this blank");
+        }
+
+        if (receiver == null){
+            throw new CustomException("Please enter input receiver object! Do not leave this blank");
+        }
+
         try {
             index = Integer.parseInt(params);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new CustomException("Please enter correct number of parameters for DeleteCommand");
         }
+
+        if (index < 1){
+            throw new CustomException("Please enter positive index of data to be deleted!");
+        }
+
         deletedElement = receiver.delete(index);
         System.out.println("Delete");
     }
