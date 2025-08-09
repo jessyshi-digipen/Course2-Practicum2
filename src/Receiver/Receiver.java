@@ -203,4 +203,19 @@ public class Receiver {
             }
         }
     }
+    //store to file that is compatible with java8
+    // public void storeToFile(){
+    //     String tempString = "";
+    //     try {
+    //         for (int i = 0; i < dataStore.size(); i++) {
+    //             if (dataStore.get(i).length != 3) {
+    //                 throw new CustomException("File corrupted, check your datastore file");
+    //             }
+    //             List<String> lines = List.of(dataStore.get(i)[0], dataStore.get(i)[1], dataStore.get(i)[2]);
+    //             try {Files.write(dataStoreFilePath, lines, StandardCharsets.UTF_8);} catch (IOException e) {e.getMessage();}
+    //         }
+    //     } catch (CustomException e) {
+    //         System.out.print(e.getMessage());
+    //     }
+    // }
 }
